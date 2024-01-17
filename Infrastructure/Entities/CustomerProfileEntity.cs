@@ -13,6 +13,7 @@ public class CustomerProfileEntity
     //AddressId int not null references Addresses(id)
 
     //en CustomerProfile måste ha en Customer
+    //en CustomerProfile kan ha en adress
 
     [Key]
 	[ForeignKey(nameof(CustomerEntity))]
@@ -29,10 +30,12 @@ public class CustomerProfileEntity
     [Column(TypeName = "nvarchar(17)")]
     public string? PhoneNumber { get; set; }
 
-    [ForeignKey(nameof(AddressEntity))]
-    public int AddressId { get; set; }
+    //[ForeignKey(nameof(AddressEntity))]
+    public int? AddressId { get; set; }
 
 
     //defininera en till en relation - en CustomerProfile måste ha en Customer
     public virtual CustomerEntity Customer { get; set; } = null!;
+    //defininera en till en relation - en CustomerProfile kan ha en adress
+    public virtual AddressEntity? Address { get; set; }
 }

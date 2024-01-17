@@ -4,6 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Presentation.Wpf.Views"
+             
+             xmlns:viewmodels="clr-namespace:Presentation.Wpf.ViewModels"
+          
+             d:DataContext="{d:DesignInstance Type=viewmodels:StartViewModel}"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -18,9 +23,9 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Content="PRODUKTER" Command="{Binding DeleteContactCommand}" CommandParameter="{Binding Contact}" Grid.Column="0" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana" />
-                <Button Content="ORDRAR" Command="{Binding NavigateToUpdateCommand}" CommandParameter="{Binding Contact}" Grid.Column="1" Margin="0,0,0,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
-                <Button Content="KUNDER" Command="{Binding NavigateToUpdateCommand}" CommandParameter="{Binding Contact}" Grid.Column="2" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
+                <Button Content="PRODUKTER" Command="" Grid.Column="0" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana" />
+                <Button Content="ORDRAR" Command="" Grid.Column="1" Margin="0,0,0,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
+                <Button Content="KUNDER" Command="{Binding NavigateToCustomersCommand}"  Grid.Column="2" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
             </Grid>
         </StackPanel>
     </Grid>

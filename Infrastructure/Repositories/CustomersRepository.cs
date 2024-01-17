@@ -1,5 +1,9 @@
-﻿namespace Infrastructure.Repositories;
+﻿using Infrastructure.Contexts;
+using Infrastructure.Entities;
 
-public class CustomersRepository
+namespace Infrastructure.Repositories;
+
+public class CustomersRepository(CustomersOrdersDbContext customersOrdersDbContext) : BaseRepository<CustomerEntity>(customersOrdersDbContext)
 {
+   
 }

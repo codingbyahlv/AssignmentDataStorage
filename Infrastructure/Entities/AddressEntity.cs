@@ -11,11 +11,11 @@ namespace Infrastructure.Entities
         //PostalCode char (6) not null,
         //City nvarchar(50) not null
 
-        //en adress kan vara kopplad till flera användare
+        //en adress kan vara kopplad till flera användarprofiler
 
 
         [Key]
-		public int Id { get; set; }
+		public int Id { get; set; } //auto
 
         [Required]
         [Column(TypeName = "nvarchar(50)")]
@@ -35,6 +35,6 @@ namespace Infrastructure.Entities
 
 
         //definerar en till många relation - en adress kan vara kopplad till flera användare
-        public virtual ICollection<CustomerEntity> Users { get; set; } = new List<CustomerEntity>();
+        public virtual ICollection<CustomerProfileEntity> CustomerProfile { get; set; } = new List<CustomerProfileEntity>();
     }
 }

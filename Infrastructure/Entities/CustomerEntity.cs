@@ -12,7 +12,7 @@ public class CustomerEntity
     //en Customer måste ha en CustomerProfile
 
     [Key]
-	public int Id { get; set; }
+	public int Id { get; set; } //auto
 
 	[Required]
 	[Column(TypeName = "nvarchar(100)")]
@@ -27,5 +27,3 @@ public class CustomerEntity
     public virtual CustomerProfileEntity? CustomerProfile { get; set; }
 }
 
-
-//hur gör id auto i DB? blir det automatiskt?
