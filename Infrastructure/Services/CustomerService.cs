@@ -12,37 +12,61 @@ namespace Infrastructure.Services
 
         public bool CreateCustomer(CustomerRegistrationDto customer)
         {
-
-            var customerEntity = new CustomerEntity
+            try
             {
-                Email = customer.Email,
-                Password = customer.Password
-            };
+                CustomerEntity customerEntity = new()
+                {
+                    Email = customer.Email,
+                    Password = customer.Password
+                };
 
-            customerEntity = _customersRepository.Create(customerEntity);
+                customerEntity = _customersRepository.Create(customerEntity);
 
-            var addressEntity = new AddressEntity
-            {
-                StreetName = customer.StreetName,
-                StreetNumber = customer.StreetNumber,
-                PostalCode = customer.PostalCode,
-                City = customer.City,
-            };
+                AddressEntity addressEntity = new()
+                {
+                    StreetName = customer.StreetName,
+                    StreetNumber = customer.StreetNumber,
+                    PostalCode = customer.PostalCode,
+                    City = customer.City,
+                };
 
-            addressEntity = _addressesRepository.Create(addressEntity);
+                addressEntity = _addressesRepository.Create(addressEntity);
 
-            var customerProfileEntity = new CustomerProfileEntity
-            {
-                CustomerId = customerEntity.Id,
-                FirstName = customer.FirstName,
-                LastName = customer.LastName,
-                PhoneNumber = customer.PhoneNumber,
-                AddressId = addressEntity.Id,
-            };
+                CustomerProfileEntity customerProfileEntity = new()
+                {
+                    CustomerId = customerEntity.Id,
+                    FirstName = customer.FirstName,
+                    LastName = customer.LastName,
+                    PhoneNumber = customer.PhoneNumber,
+                    AddressId = addressEntity.Id,
+                };
 
-            customerProfileEntity = _customerProfilesRepository.Create(customerProfileEntity);
+                customerProfileEntity = _customerProfilesRepository.Create(customerProfileEntity);
 
-            return true;
+                return true;
+            }
+            catch (Exception ex) { }
+            return false;
+        }
+        public void ReadAllCustomers()
+        {
+
+        }
+
+        public void ReadOneCustomer()
+        {
+
+        }
+
+
+        public void UpdateCustomer(CustomerRegistrationDto customer)
+        {
+            
+        }
+
+        public void DeleteCustomer()
+        {
+
         }
     }
 }
