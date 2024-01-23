@@ -30,6 +30,19 @@ namespace Infrastructure.Services
             return false;
         }
 
+        //method: read all customers
+        public async Task<IEnumerable<CustomerDto>> ReadCustomersAsync()
+        {
+            try
+            {
+                IEnumerable<CustomerEntity> customerEntities = await _customersRepository.ReadAllAsync();
+                IEnumerable<CustomerDto> allCustomerDtos = CustomerFactory.Create(customerEntities);
+                return allCustomerDtos ?? null!;
+            }
+            catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadCustomersAsync"); }
+            return null!;
+        }
+
         //method: read all customers including the ref-tables
         public async Task<IEnumerable<CustomerDto>> ReadAllCustomersAsync()
         {
@@ -40,6 +53,18 @@ namespace Infrastructure.Services
                 return allCustomerDtos ?? null!;
             }
             catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadAllCustomersAsync"); }
+            return null!;
+        }
+
+        //method: read one customer
+        public async Task<CustomerEntity> ReadCustomerAsync(int id)
+        {
+            try
+            {
+                CustomerEntity customerEntity = await _customersRepository.ReadOneAsync(x => x.Id == id);
+                return customerEntity ?? null!;
+            }
+            catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadCustomer"); }
             return null!;
         }
 
@@ -54,6 +79,7 @@ namespace Infrastructure.Services
             catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadOneCustomer"); }
             return null!;
         }
+
 
         //method: update customer information - the user should not be able to update email and password
         public async Task<CustomerDto> UpdateCustomerAsync(CustomerDto customer)

@@ -14,7 +14,6 @@ public static class CustomerFactory
         };
     }
 
-
     public static AddressEntity Create(string streetName, string streetNumber, string postalCode, string city)
     {
         return new AddressEntity
@@ -57,7 +56,6 @@ public static class CustomerFactory
         };
     }
 
-    //ANVÄNDS EJ JUST NU
     public static CustomerDto Create(CustomerDto customerDto, AddressEntity addressEntity, CustomerProfileEntity customerProfilesEntity)
     {
         return new CustomerDto
