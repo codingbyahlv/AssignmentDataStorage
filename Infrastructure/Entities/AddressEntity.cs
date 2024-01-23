@@ -5,15 +5,6 @@ namespace Infrastructure.Entities
 {
     public class AddressEntity
     {
-        //Id int not null identity primary key,
-        //StreetName nvarchar(50) not null,
-        //StreetNumber varchar(5) not null,
-        //PostalCode char (6) not null,
-        //City nvarchar(50) not null
-
-        //en adress kan vara kopplad till flera användarprofiler
-
-
         [Key]
 		public int Id { get; set; } //auto
 
@@ -34,7 +25,7 @@ namespace Infrastructure.Entities
         public string City { get; set; } = null!;
 
 
-        //definerar en till många relation - en adress kan vara kopplad till flera användare
+        //en adress kan vara kopplad till flera användare
         public virtual ICollection<CustomerProfileEntity> CustomerProfile { get; set; } = new List<CustomerProfileEntity>();
     }
 }

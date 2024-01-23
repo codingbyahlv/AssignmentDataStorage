@@ -5,13 +5,6 @@ namespace Infrastructure.Entities;
 
 public class OrderEntity
 {
-    //Id int not null identity primary key,
-    //Date datetime2 not null, 
-    //Status nvarchar(20) not null,
-    //CustomerId int not null references Customers(Id)
-
-    //en Order måste ha en Customer
-
     [Key]
 	public int Id { get; set; } //auto
 
@@ -26,7 +19,7 @@ public class OrderEntity
     [Required]
     public int CustomerId { get; set; }
 
-    //defininera en till en relation - Order måste ha en Customer
+    //Order måste ha en Customer
     public virtual CustomerEntity Customer { get; set; } = null!;
 }
 

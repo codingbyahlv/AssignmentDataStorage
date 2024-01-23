@@ -6,15 +6,6 @@ namespace Infrastructure.Entities;
 
 public class CustomerProfileEntity
 {
-    //CustomerId int not null primary key references Customers(Id),
-    //FirstName nvarchar(50) not null,
-    //LastName nvarchar(50) not null,
-    //PhoneNumber nvarchar(17) null,
-    //AddressId int not null references Addresses(id)
-
-    //en CustomerProfile måste ha en Customer
-    //en CustomerProfile kan ha en adress
-
     [Key]
 	[ForeignKey(nameof(CustomerEntity))]
 	public int CustomerId { get; set; }
@@ -30,12 +21,11 @@ public class CustomerProfileEntity
     [Column(TypeName = "nvarchar(17)")]
     public string? PhoneNumber { get; set; }
 
-    //[ForeignKey(nameof(AddressEntity))]
     public int? AddressId { get; set; }
 
 
-    //defininera en till en relation - en CustomerProfile måste ha en Customer
+    //en CustomerProfile måste ha en Customer
     public virtual CustomerEntity Customer { get; set; } = null!;
-    //defininera en till en relation - en CustomerProfile kan ha en adress
+    //en CustomerProfile kan ha en adress
     public virtual AddressEntity? Address { get; set; }
 }

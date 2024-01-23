@@ -21,12 +21,3 @@ public class CustomersOrdersDbContext(DbContextOptions<CustomersOrdersDbContext>
             .HasKey(x => new { x.RowId, x.OrderId });
     }
 }
-
-
-
-
-
-
-//OnModelCreate!!!
-//- speca Email på CustomerEntity som Unique
-//- sammsánsatt nyckel (RowId, OrderId) på OrderRowEntity
