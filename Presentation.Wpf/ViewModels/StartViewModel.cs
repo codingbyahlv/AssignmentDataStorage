@@ -1,13 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using Presentation.Wpf.Views;
 
 namespace Presentation.Wpf.ViewModels;
 
 public partial class StartViewModel(IServiceProvider sp) : ObservableObject
 {
-    
+
     //vi vill komma åt vår servie provider
     private readonly IServiceProvider _sp = sp;
 

@@ -1,24 +1,25 @@
 ﻿using Business.Factories;
+using Business.Interfaces;
 using Infrastructure.Dtos;
 using Infrastructure.Entities;
-using Infrastructure.Interfaces;
+using Infrastructure.Repositories;
 using Shared.Interfaces;
 
 namespace Infrastructure.Services
 {
-    public class CustomerService(ICustomerRepository customersRepository, IAddressesRepository addressesRepository, ICustomerProfilesRepository customerProfilesRepository, ILogger logger)
+    public class CustomerService(CustomersRepository customersRepository, AddressesRepository addressesRepository, CustomerProfilesRepository customerProfilesRepository, ILogger logger) : ICustomerService
     {
-        private readonly ICustomerRepository _customersRepository = customersRepository;
-        private readonly IAddressesRepository _addressesRepository = addressesRepository;
-        private readonly ICustomerProfilesRepository _customerProfilesRepository = customerProfilesRepository;
+        private readonly CustomersRepository _customersRepository = customersRepository;
+        private readonly AddressesRepository _addressesRepository = addressesRepository;
+        private readonly CustomerProfilesRepository _customerProfilesRepository = customerProfilesRepository;
         private readonly ILogger _logger = logger;
 
         //method: create a new customer
-        public async Task<bool>CreateCustomerAsync(CustomerRegistrationDto customer)
+        public async Task<bool> CreateCustomerAsync(CustomerRegistrationDto customer)
         {
             try
             {
-                if(!await _customersRepository.ExistsAsync(x => x.Email == customer.Email))
+                if (!await _customersRepository.ExistsAsync(x => x.Email == customer.Email))
                 {
                     CustomerEntity customerEntity = await _customersRepository.CreateAsync(CustomerFactory.Create(customer.Email, customer.Password));
                     AddressEntity addressEntity = await _addressesRepository.CreateAsync(CustomerFactory.Create(customer.StreetName, customer.StreetNumber, customer.PostalCode, customer.City));
@@ -95,7 +96,7 @@ namespace Infrastructure.Services
                     addressEntity = await _addressesRepository.UpdateAsync(
                         x => x.Id == customer.AddressId,
                         CustomerFactory.Create(customer.StreetName, customer.StreetNumber, customer.PostalCode, customer.City));
-                    addressId = addressEntity.Id; 
+                    addressId = addressEntity.Id;
                 }
 
                 if (customer.FirstName != null && customer.LastName != null)
@@ -113,11 +114,21 @@ namespace Infrastructure.Services
             return null!;
         }
 
+        //method: delete customer based on email
         public async Task<bool> DeleteCustomerAsync(CustomerDto customer)
         {
             try
             {
-                return true;
+                if (!await _customersRepository.ExistsAsync(x => x.Email == customer.Email))
+                {
+                    bool customerProfileResult = await _customersRepository.DeleteAsync(x => x.Email == customer.Email);
+                    bool customerResult = await _customersRepository.DeleteAsync(x => x.Email == customer.Email);
+
+                    if (customerProfileResult && customerResult)
+                    {
+                        return true;
+                    }
+                }
             }
             catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - DeleteCustomerAsync"); }
             return false;

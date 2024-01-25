@@ -14,7 +14,7 @@ public partial class MainViewModel : ObservableObject
     {
         _sp = sp;
         //det första jag vill se när applikationen startar upp
-        CurrentViewModel = _sp.GetRequiredService<StartViewModel>();
+        //CurrentViewModel = _sp.GetRequiredService<StartViewModel>();
     }
 
 }

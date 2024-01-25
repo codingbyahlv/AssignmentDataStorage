@@ -34,7 +34,7 @@ namespace Presentation.Wpf
 
                     services.AddSingleton<CustomerListViewModel>();
                     services.AddSingleton<CustomerListView>();
-                
+
                     services.AddScoped<CustomerService>();
                     services.AddScoped<CustomersRepository>();
                     services.AddScoped<AddressesRepository>();
@@ -52,5 +52,4 @@ namespace Presentation.Wpf
 
         }
     }
-
 }

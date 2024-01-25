@@ -1,5 +1,4 @@
-﻿using Infrastructure.Entities;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace Infrastructure.Interfaces
 {
@@ -10,7 +9,6 @@ namespace Infrastructure.Interfaces
         Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate);
         Task<IEnumerable<TEntity>> ReadAllAsync();
         Task<TEntity> ReadOneAsync(Expression<Func<TEntity, bool>> predicate);
-
         Task<TEntity> UpdateAsync(Expression<Func<TEntity, bool>> predicate, TEntity newEntity);
     }
 }

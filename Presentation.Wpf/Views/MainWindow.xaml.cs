@@ -1,5 +1,4 @@
-﻿using Infrastructure.Services;
-using Presentation.Wpf.ViewModels;
+﻿using Presentation.Wpf.ViewModels;
 using System.Windows;
 
 namespace Presentation.Wpf

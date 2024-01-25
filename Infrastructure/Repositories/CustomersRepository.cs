@@ -23,7 +23,7 @@ public class CustomersRepository : BaseRepository<CustomerEntity, CustomersOrder
         {
             List<CustomerEntity> entities = await _customersOrdersDbContext.Customers
                 .Include(x => x.CustomerProfile)
-                    .ThenInclude(y => y.Address)
+                    .ThenInclude(y => y.Address) //?????????
                 .ToListAsync();
                 return entities ?? null!;
         }
@@ -37,7 +37,7 @@ public class CustomersRepository : BaseRepository<CustomerEntity, CustomersOrder
         {
             CustomerEntity? oneEntity = await _customersOrdersDbContext.Customers
                 .Include(x => x.CustomerProfile)
-                    .ThenInclude(y => y.Address)
+                    .ThenInclude(y => y.Address)   //??????????
                 .FirstOrDefaultAsync(predicate);
                 return oneEntity ?? null!;
         }
