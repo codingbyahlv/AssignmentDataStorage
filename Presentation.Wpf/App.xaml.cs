@@ -6,6 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Presentation.Wpf.ViewModels;
 using Presentation.Wpf.Views;
+using Shared.Interfaces;
+using Shared.Utils;
 using System.Windows;
 
 namespace Presentation.Wpf
@@ -19,6 +21,7 @@ namespace Presentation.Wpf
 
         public App()
         {
+                
             builder = Host
                 .CreateDefaultBuilder()
                 .ConfigureServices(services =>
@@ -35,6 +38,8 @@ namespace Presentation.Wpf
                     services.AddSingleton<CustomerListViewModel>();
                     services.AddSingleton<CustomerListView>();
 
+                    //services.AddSingleton<ILogger>(new Logger(@"c:\Work\EC\4-datastorage\log.txt"));
+                    services.AddSingleton<ILogger>(new Logger());
                     services.AddScoped<CustomerService>();
                     services.AddScoped<CustomersRepository>();
                     services.AddScoped<AddressesRepository>();
@@ -49,7 +54,6 @@ namespace Presentation.Wpf
             builder.Start();
             MainWindow MainWindow = builder.Services.GetRequiredService<MainWindow>();
             MainWindow.Show();
-
         }
     }
 }

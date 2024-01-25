@@ -12,6 +12,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="Kunder"/>
+        <StackPanel>
+            <Button Content="tillbaka" Command="{Binding NavigateToCustomersCommand}" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
+            <TextBlock Text="Kunder"/>
+            <Button Content="LÄGG TILL NY" Command="{Binding CreateDemoCustomerCommand}" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
+        </StackPanel>
     </Grid>
 </UserControl>
