@@ -22,7 +22,8 @@ namespace Infrastructure.Services
                 if (!await _customersRepository.ExistsAsync(x => x.Email == customer.Email))
                 {
                     CustomerEntity customerEntity = await _customersRepository.CreateAsync(CustomerFactory.Create(customer.Email, customer.Password));
-                    AddressEntity addressEntity = await _addressesRepository.CreateAsync(CustomerFactory.Create(customer.StreetName, customer.StreetNumber, customer.PostalCode, customer.City));
+                    AddressEntity addressEntity = await _addressesRepository.ReadOneAsync(x => x.StreetName == customer.StreetName && x.StreetNumber == customer.StreetNumber && x.PostalCode == customer.PostalCode && x.City == customer.City);
+                    addressEntity ??= await _addressesRepository.CreateAsync(CustomerFactory.Create(customer.StreetName, customer.StreetNumber, customer.PostalCode, customer.City));
                     CustomerProfileEntity customerProfileEntity = await _customerProfilesRepository.CreateAsync(CustomerFactory.Create(customerEntity.Id, customer.FirstName, customer.LastName, customer.PhoneNumber, addressEntity.Id));
                     return true;
                 }
@@ -87,16 +88,42 @@ namespace Infrastructure.Services
         {
             try
             {
+                //hämta in adressId om det redan finns en adress
                 int? addressId = customer.AddressId;
                 AddressEntity addressEntity = new();
                 CustomerProfileEntity customerProfileEntity = new();
 
+                //om allt är ifyllt = vi vill uppdatera adressen
                 if (customer.StreetName != null && customer.StreetNumber != null && customer.PostalCode != null && customer.City != null)
                 {
-                    addressEntity = await _addressesRepository.UpdateAsync(
-                        x => x.Id == customer.AddressId,
-                        CustomerFactory.Create(customer.StreetName, customer.StreetNumber, customer.PostalCode, customer.City));
-                    addressId = addressEntity.Id;
+                    //OM tidigare adressId är null = adress inte finns
+                    if(addressId == null)
+                    {
+                        //se om nya adressen finns i db
+                        addressEntity = await _addressesRepository.ReadOneAsync(x => x.StreetName == customer.StreetName && x.StreetNumber == customer.StreetNumber && x.PostalCode == customer.PostalCode && x.City == customer.City);
+                        
+                        //om adress finns i db sätt id till dess id
+                        if (addressEntity != null)
+                        {
+                            addressId = addressEntity.Id;
+                        }
+                        //om adress ej fanns i db - skapa ny adress i db
+                        else
+                        {
+                            addressEntity = await _addressesRepository.ReadOneAsync(x => x.StreetName == customer.StreetName && x.StreetNumber == customer.StreetNumber && x.PostalCode == customer.PostalCode && x.City == customer.City);
+                            addressId = addressEntity.Id;
+                        }
+                    }
+
+                    //ANNARS tidigare adress finns, uppdatera denna
+                    else 
+                    { 
+                        //uppdatera befintlig adress
+                        addressEntity = await _addressesRepository.UpdateAsync(
+                            x => x.Id == customer.AddressId,
+                            CustomerFactory.Create(customer.StreetName, customer.StreetNumber, customer.PostalCode, customer.City));
+                        addressId = addressEntity.Id;            
+                    }  
                 }
 
                 if (customer.FirstName != null && customer.LastName != null)

@@ -16,7 +16,7 @@ public abstract class BaseRepository<TEntity, TContext> : IBaseRepository<TEntit
         _logger = logger;
     }
 
-    //method: CHECK if entity exists
+    //method: CHECK(READ) if entity exists based on predicate
     public virtual async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate)
     {
         try

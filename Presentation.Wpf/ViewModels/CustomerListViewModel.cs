@@ -17,13 +17,13 @@ public partial class CustomerListViewModel(IServiceProvider sp, CustomerService 
     {
         var result = _customerService.CreateCustomerAsync(new CustomerRegistrationDto
         {
-            Email = "hampus@mail.se",
+            Email = "ah@mail.se",
             Password = "BytMig123!",
             StreetName = "Storgatan",
             StreetNumber = "12",
             PostalCode = "44360",
             City = "Stenkullen",
-            FirstName = "Hampus",
+            FirstName = "Ann-Helen",
             LastName = "VL",
             PhoneNumber = "0700112233"
         });

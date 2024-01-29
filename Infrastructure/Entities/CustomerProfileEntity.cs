@@ -26,6 +26,6 @@ public class CustomerProfileEntity
 
     //en CustomerProfile måste ha en Customer
     public virtual CustomerEntity Customer { get; set; } = null!;
-    //en CustomerProfile kan ha en adress
+    //en CustomerProfile kan ha en Address
     public virtual AddressEntity? Address { get; set; }
 }

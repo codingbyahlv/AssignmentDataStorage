@@ -25,7 +25,7 @@ namespace Infrastructure.Entities
         public string City { get; set; } = null!;
 
 
-        //en adress kan vara kopplad till flera användare
+        //en Address kan vara kopplad till flera CustomerProfiles
         public virtual ICollection<CustomerProfileEntity> CustomerProfile { get; set; } = new List<CustomerProfileEntity>();
     }
 }
