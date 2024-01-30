@@ -6,16 +6,10 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories;
 
-public class CustomersRepository : BaseRepository<CustomerEntity, CustomersOrdersDbContext>
+public class CustomersRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : BaseRepository<CustomerEntity, CustomersOrdersDbContext>(customersOrdersDbContext, logger)
 {
-    private readonly CustomersOrdersDbContext _customersOrdersDbContext;
-    private readonly ILogger _logger;
-
-    public CustomersRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : base(customersOrdersDbContext, logger)
-    {
-        _customersOrdersDbContext = customersOrdersDbContext;
-        _logger = logger;
-    }
+    private readonly CustomersOrdersDbContext _customersOrdersDbContext = customersOrdersDbContext;
+    private readonly ILogger _logger = logger;
 
     public async Task<IEnumerable<CustomerEntity>> ReadAllWithAllInfoAsync()
     {
@@ -25,7 +19,7 @@ public class CustomersRepository : BaseRepository<CustomerEntity, CustomersOrder
                 .Include(x => x.CustomerProfile)
                     .ThenInclude(y => y.Address) //?????????
                 .ToListAsync();
-                return entities ?? null!;
+                return entities;
         }
         catch (Exception ex) { _logger.Log(ex.Message, "CustomerRepository - ReadAllWithAllInfoAsync"); }
         return null!;

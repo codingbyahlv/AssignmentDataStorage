@@ -10,12 +10,92 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:CustomerListViewModel}"
              
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="800" d:DesignWidth="1400">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,35,0,-35">
         <StackPanel>
-            <Button Content="tillbaka" Command="{Binding NavigateToCustomersCommand}" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
-            <TextBlock Text="Kunder"/>
-            <Button Content="LÄGG TILL NY" Command="{Binding CreateDemoCustomerCommand}" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana"/>
+            <Grid Margin="5,0,5,35">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Content="&lt; Tillbaka till översikt" Command="{Binding NavigateToOverviewCommand}" Margin="5,0,5,0" Background="#ffffff" Foreground="#111111" BorderThickness="1" Padding="0,10" FontFamily="Verdana" />
+                <TextBlock Grid.Column="1" Text="Kunder" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+                <Button  Grid.Column="2" Content="LÄGG TILL NY KUND" Command="{Binding CreateDemoCustomerCommand}" Margin="5,0,5,0" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="0,10" FontFamily="Verdana" />
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="5,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Grid.Column="0" Text="Id" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="1" Text="Förnamn"  VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="2" Text="Efternamn" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="3" Text="E-post" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="4" Text="Telefonnummer" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="5" Text="Gatuadress" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="6" Text="Gatunummer" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="7" Text="Postnummer" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Column="8" Text="Stad" VerticalAlignment="Center" HorizontalAlignment="Left" />
+                </Grid>
+
+
+                <ListView Grid.Row="1" ItemsSource="{Binding Customers}" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="#d4d4d4" BorderThickness="0,0,0,1">
+                            <Grid Margin="5,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="3*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="2*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Id}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="1" Text="{Binding FirstName}"  VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="2" Text="{Binding LastName}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="3" Text="{Binding Email}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="4" Text="{Binding PhoneNumber}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="5" Text="{Binding StreetName}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="6" Text="{Binding StreetNumber}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="7" Text="{Binding PostalCode}" VerticalAlignment="Center" />
+                                <TextBlock Grid.Column="8" Text="{Binding City}" VerticalAlignment="Center" />
+                                <Button Grid.Column="9" CommandParameter="{Binding .}" Command="{Binding DataContext.TestCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Content="Visa ordrar" Padding="5,5" Margin="5,0"  VerticalAlignment="Center" />
+                                <Button Grid.Column="10" CommandParameter="{Binding .}" Command="{Binding DataContext.TestCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Content="Redigera" Padding="5,5" VerticalAlignment="Center" />
+                            </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </Grid>
         </StackPanel>
-    </Grid>
+    </ScrollViewer>
 </UserControl>

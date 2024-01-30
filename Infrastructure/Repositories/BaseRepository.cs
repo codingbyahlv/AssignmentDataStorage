@@ -16,19 +16,6 @@ public abstract class BaseRepository<TEntity, TContext> : IBaseRepository<TEntit
         _logger = logger;
     }
 
-    //method: CHECK(READ) if entity exists based on predicate
-    public virtual async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate)
-    {
-        try
-        {
-            bool found = await context.Set<TEntity>().AnyAsync(predicate);
-            return found;
-        }
-        catch (Exception ex) { _logger.Log(ex.Message, "BaseRepository - ExistsAsync"); }
-        return false;
-    }
-
-
     //method: CREATE new entity
     public virtual async Task<TEntity> CreateAsync(TEntity entity)
     {
@@ -42,6 +29,17 @@ public abstract class BaseRepository<TEntity, TContext> : IBaseRepository<TEntit
         return null!;
     }
 
+    //method: READ(CHECK) if entity exists based on predicate
+    public virtual async Task<bool> ExistsAsync(Expression<Func<TEntity, bool>> predicate)
+    {
+        try
+        {
+            bool found = await context.Set<TEntity>().AnyAsync(predicate);
+            return found;
+        }
+        catch (Exception ex) { _logger.Log(ex.Message, "BaseRepository - ExistsAsync"); }
+        return false;
+    }
 
     //method: READ all entities
     public virtual async Task<IEnumerable<TEntity>> ReadAllAsync()
