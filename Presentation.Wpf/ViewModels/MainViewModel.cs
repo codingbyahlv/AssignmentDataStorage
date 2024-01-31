@@ -13,7 +13,7 @@ public partial class MainViewModel : ObservableObject
     public MainViewModel(IServiceProvider sp)
     {
         _sp = sp;
-        CurrentViewModel = _sp.GetRequiredService<StartViewModel>();
+        CurrentViewModel = _sp.GetRequiredService<CustomerListViewModel>();
     }
 
 }

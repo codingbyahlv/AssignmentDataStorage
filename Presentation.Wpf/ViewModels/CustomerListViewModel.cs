@@ -19,7 +19,7 @@ public partial class CustomerListViewModel : ObservableObject
         ReadAllDemoCustomers();
     }
 
-    //FUNKAR EJ 100, UPPDATERAS INTE SOM DEN SKA - ATT JOBBA PÅ!!!!!
+    //FUNKAR EJ 100, UPPDATERAS INTE SOM DEN SKA NÄR MAN KÖR DELETE/CREATE - ATT JOBBA PÅ!!!!!
     [ObservableProperty]
     public IEnumerable<CustomerDto> customers = [];
     //public IEnumerable<CustomerDto> Customers { get; private set; } = [];
@@ -33,14 +33,6 @@ public partial class CustomerListViewModel : ObservableObject
         {
             Customers = result;
         }
-    }
-
-    // method: navigation between views
-    [RelayCommand]
-    private void NavigateToOverview()
-    {
-        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _sp.GetRequiredService<StartViewModel>();
     }
 
     // method: navigation between views

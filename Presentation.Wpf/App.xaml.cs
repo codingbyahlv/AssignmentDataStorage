@@ -32,9 +32,6 @@ namespace Presentation.Wpf
                     services.AddSingleton<MainViewModel>();
                     services.AddSingleton<MainWindow>();
 
-                    services.AddSingleton<StartViewModel>();
-                    services.AddSingleton<StartView>();
-
                     services.AddSingleton<CustomerListViewModel>();
                     services.AddSingleton<CustomerListView>();
                     services.AddSingleton<CustomerAddViewModel>();
