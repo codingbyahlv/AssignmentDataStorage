@@ -3,10 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using Infrastructure.Dtos;
 using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Presentation.Wpf.ViewModels;
 
@@ -23,101 +19,23 @@ public partial class CustomerListViewModel : ObservableObject
         ReadAllDemoCustomers();
     }
 
+    //FUNKAR EJ 100, UPPDATERAS INTE SOM DEN SKA - ATT JOBBA PÅ!!!!!
     [ObservableProperty]
-    private IEnumerable<CustomerDto> customers = [];
+    public IEnumerable<CustomerDto> customers = [];
+    //public IEnumerable<CustomerDto> Customers { get; private set; } = [];
 
-
-
-    //skapar en ny customer
+    // method: read the customers from db
     [RelayCommand]
-    private void CreateDemoCustomer()
-    {
-
-        CustomerRegistrationDto customer = new CustomerRegistrationDto
-        {
-            Email = "update14@mail.se",
-            Password = "BytMig123!",
-            StreetName = "Storgatan",
-            StreetNumber = "14",
-            PostalCode = "44360",
-            City = "Stenkullen",
-            FirstName = "Ann-Helen",
-            LastName = "Lausmaa",
-            PhoneNumber = "0700112233"
-        };
-        var result = _customerService.CreateCustomerAsync(customer);
-
-    }
-
-    //uppdaterar en customer
-    [RelayCommand]
-    private void UpdateDemoCustomer()
-    {
-        CustomerDto demoCustomer = new CustomerDto
-        {
-            Id = 12,
-            Email = "update11@mail.se",
-            StreetName = "NY12 Storgatan",
-            StreetNumber = "12",
-            PostalCode = "44360",
-            City = "Stenkullen",
-            FirstName = "NY12 Ann-Helen",
-            LastName = "U12 VL",
-            PhoneNumber = "0700112233"
-        };
-
-        var result = _customerService.UpdateCustomerAsync(demoCustomer);
-    }
-
-    //hämtar all info om alla customers
-    [RelayCommand]
-    private async Task ReadAllDemoCustomers()
+    public async Task ReadAllDemoCustomers()
     {
         IEnumerable<CustomerDto> result = await _customerService.ReadAllCustomersAllInfoAsync();
         if (result.Any())
-            //Customers = result.ToList();
-            Customers = result;
-        //var customers = new List<CustomerDto>();
-        //foreach (var item in result)
-        //{
-        //    Customers.Add(item);
-        //}
-        //foreach (var item in Customers)
-        //{
-        //    Debug.WriteLine($"Customer {item.Id} {item.Email} {item.FirstName} {item.StreetName}");
-        //}
-    }
-
-    //hämtar all info om en customer
-    [RelayCommand]
-    private async Task ReadOneDemoCustomer()
-    {
-        int id = 11;
-        CustomerDto result = await _customerService.ReadOneCustomerAllInfoAsync(id);
-        Debug.WriteLine($"Customer {result.Id} {result.Email} {result.FirstName} {result.StreetName}");
-    }
-
-    //tar bort en customer
-    [RelayCommand]
-    private void DeleteDemoCustomer()
-    {
-        CustomerDto demoCustomer = new CustomerDto
         {
-            Id = 12,
-            Email = "hampus@mail.se",
-            StreetName = "Storgatan",
-            StreetNumber = "12",
-            PostalCode = "44360",
-            City = "Stenkullen",
-            FirstName = "Ann-Helen",
-            LastName = "VL",
-            PhoneNumber = "0700112233"
-        };
-
-        var result = _customerService.DeleteCustomerAsync(demoCustomer);
+            Customers = result;
+        }
     }
 
-    //för att navigera till en viss vy
+    // method: navigation between views
     [RelayCommand]
     private void NavigateToOverview()
     {
@@ -125,15 +43,38 @@ public partial class CustomerListViewModel : ObservableObject
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<StartViewModel>();
     }
 
+    // method: navigation between views
     [RelayCommand]
-    private void Test()
+    private void NavigateToAddView()
     {
-        Debug.WriteLine("KLICKAD!!!!!!!!!!!!!!!!!!!!!!");
+        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<CustomerAddViewModel>();
     }
 
+    // method: navigation between views
+    [RelayCommand]
+    private void NavigateToUpdateView(CustomerDto customer)
+    {
+        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        CustomerUpdateViewModel updateCustomerViewModel = _sp.GetRequiredService<CustomerUpdateViewModel>();
+        updateCustomerViewModel.Customer = customer;
+        mainViewModel.CurrentViewModel = updateCustomerViewModel;
+    }
 
-
-
-
-
+    //[RelayCommand]
+    //private void NavigateToOrdersView()
+    //{
+    //    MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+    //    mainViewModel.CurrentViewModel = _sp.GetRequiredService<ViewOrdersViewModel>();
+    //}
 }
+
+    ////hämtar all info om en customer
+    //[RelayCommand]
+    //private async Task ReadOneDemoCustomer()
+    //{
+    //    int id = 11;
+    //    CustomerDto result = await _customerService.ReadOneCustomerAllInfoAsync(id);
+    //    Debug.WriteLine($"Customer {result.Id} {result.Email} {result.FirstName} {result.StreetName}");
+    //}
+

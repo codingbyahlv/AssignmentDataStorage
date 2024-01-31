@@ -37,6 +37,10 @@ namespace Presentation.Wpf
 
                     services.AddSingleton<CustomerListViewModel>();
                     services.AddSingleton<CustomerListView>();
+                    services.AddSingleton<CustomerAddViewModel>();
+                    services.AddSingleton<CustomerAddView>();
+                    services.AddSingleton<CustomerUpdateViewModel>();
+                    services.AddSingleton<CustomerUpdateView>();
 
                     //services.AddSingleton<ILogger>(new Logger(@"c:\Work\EC\4-datastorage\log.txt"));
                     services.AddSingleton<ILogger>(new Logger());

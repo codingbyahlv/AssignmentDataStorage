@@ -125,15 +125,15 @@ namespace Infrastructure.Services
             return null!;
         }
 
-        //method: delete customer based on email
+        //method: delete customer based on id
         public async Task<bool> DeleteCustomerAsync(CustomerDto customer)
         {
             try
             {
-                if (await _customersRepository.ExistsAsync(x => x.Email == customer.Email))
+                if (await _customersRepository.ExistsAsync(x => x.Id == customer.Id))
                 {
                     bool customerProfileResult = await _customerProfilesRepository.DeleteAsync(x => x.CustomerId == customer.Id);
-                    bool customerResult = await _customersRepository.DeleteAsync(x => x.Email == customer.Email);
+                    bool customerResult = await _customersRepository.DeleteAsync(x => x.Id == customer.Id);
 
                     if (customerProfileResult && customerResult)
                     {

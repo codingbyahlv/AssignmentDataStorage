@@ -6,12 +6,9 @@ namespace Presentation.Wpf.ViewModels;
 
 public partial class StartViewModel(IServiceProvider sp) : ObservableObject
 {
-
-    //vi vill komma åt vår servie provider
     private readonly IServiceProvider _sp = sp;
 
-
-    //för att navigera till en viss vy
+    // method: navigation
     [RelayCommand]
     private void NavigateToCustomers()
     {
