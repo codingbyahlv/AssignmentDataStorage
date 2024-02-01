@@ -21,12 +21,12 @@ public partial class CustomerAddViewModel(IServiceProvider serviceProvider, Cust
     {
         bool result = await _customerService.CreateCustomerAsync(NewCustomer);
         if (result) 
-        { 
+        {
             NavigateToListView();
         }
     }
 
-    // method: navigation
+    // method: navigation back to list view
     [RelayCommand]
     private void NavigateToListView()
     {

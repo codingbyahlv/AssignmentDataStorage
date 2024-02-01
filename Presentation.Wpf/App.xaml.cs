@@ -39,12 +39,23 @@ namespace Presentation.Wpf
                     services.AddSingleton<CustomerUpdateViewModel>();
                     services.AddSingleton<CustomerUpdateView>();
 
+                    services.AddSingleton<OrderListViewModel>();
+                    services.AddSingleton<OrderListView>();
+                    services.AddSingleton<OrderAddViewModel>();
+                    services.AddSingleton<OrderAddView>();
+                    services.AddSingleton<OrderUpdateViewModel>();
+                    services.AddSingleton<OrderUpdateView>();
+
                     //services.AddSingleton<ILogger>(new Logger(@"c:\Work\EC\4-datastorage\log.txt"));
                     services.AddSingleton<ILogger>(new Logger());
                     services.AddScoped<CustomerService>();
                     services.AddScoped<CustomersRepository>();
                     services.AddScoped<AddressesRepository>();
                     services.AddScoped<CustomerProfilesRepository>();
+
+                    services.AddScoped<OrderService>();
+                    services.AddScoped<OrdersRepository>();
+                    services.AddScoped<OrderRowsRepository>();
 
                 })
                 .Build();

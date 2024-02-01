@@ -6,9 +6,9 @@
              xmlns:local="clr-namespace:Presentation.Wpf.Views"
              xmlns:viewmodels="clr-namespace:Presentation.Wpf.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:CustomerAddViewModel}"
-             
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1400">
+    
     <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,35,0,35">
         <StackPanel Margin="20">
             <Button Content="&lt; Tillbaka" Command="{Binding NavigateToListViewCommand}" HorizontalAlignment="Left" Background="#ffffff" BorderThickness="0" FontFamily="Verdana" FontSize="14" Foreground="#585858"/>

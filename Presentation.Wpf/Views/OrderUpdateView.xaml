@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Presentation.Wpf.Views.OrderUpdateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Presentation.Wpf.Views"
+             xmlns:viewmodels="clr-namespace:Presentation.Wpf.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:OrderAddViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1400">
+    <Grid>
+        <TextBlock Grid.Column="0" Text="Update" FontSize="32"/>
+    </Grid>
+</UserControl>

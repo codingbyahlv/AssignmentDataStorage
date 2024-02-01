@@ -18,7 +18,7 @@
 
             <StackPanel Grid.Column="0" Margin="0,0,20,0">
                 <Button Content="KUNDER" Command="{Binding NavigateToCustomersCommand}" Margin="0,5" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="20" FontFamily="Verdana"/>
-                <Button Content="ORDRAR" Command="" Margin="0,5" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="20" FontFamily="Verdana"/>
+                <Button Content="ORDRAR" Command="{Binding NavigateToOrdersCommand}" Margin="0,5" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="20" FontFamily="Verdana"/>
                 <Button Content="PRODUKTER" Command="" Margin="0,5" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="20" FontFamily="Verdana" />
             </StackPanel>
 

@@ -17,26 +17,22 @@ using System.Windows.Shapes;
 namespace Presentation.Wpf.Views
 {
     /// <summary>
-    /// Interaction logic for CustomerListView.xaml
+    /// Interaction logic for OrderListView.xaml
     /// </summary>
-    public partial class CustomerListView : UserControl
+    public partial class OrderListView : UserControl
     {
-        public CustomerListView()
+        public OrderListView()
         {
             InitializeComponent();
             Loaded += UserControl_Loaded;
         }
 
-
-
-
-
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            if (DataContext is CustomerListViewModel viewModel)
+            if (DataContext is OrderListViewModel viewModel)
             {
                 // Call the method in your ViewModel
-                viewModel.ReadAllCustomers();
+                viewModel.ReadAllOrders();
             }
         }
     }

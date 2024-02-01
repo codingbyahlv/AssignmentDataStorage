@@ -83,7 +83,7 @@ public abstract class BaseRepository<TEntity, TContext> : IBaseRepository<TEntit
                 context.Entry(currentEntity).CurrentValues.SetValues(newEntity);
                 await context.SaveChangesAsync();
 
-                return currentEntity;
+                return newEntity;
             }
 
         }

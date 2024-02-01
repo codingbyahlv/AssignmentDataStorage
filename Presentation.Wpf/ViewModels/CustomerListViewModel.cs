@@ -6,27 +6,17 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Presentation.Wpf.ViewModels;
 
-public partial class CustomerListViewModel : ObservableObject
+public partial class CustomerListViewModel(IServiceProvider sp, CustomerService customerService) : ObservableObject
 {
+    private readonly IServiceProvider _sp = sp;
+    private readonly CustomerService _customerService = customerService;
 
-    private readonly IServiceProvider _sp;
-    private readonly CustomerService _customerService;
-
-    public CustomerListViewModel(IServiceProvider sp, CustomerService customerService)
-    {
-        _sp = sp;
-        _customerService = customerService;
-        ReadAllDemoCustomers();
-    }
-
-    //FUNKAR EJ 100, UPPDATERAS INTE SOM DEN SKA NÄR MAN KÖR DELETE/CREATE - ATT JOBBA PÅ!!!!!
     [ObservableProperty]
     public IEnumerable<CustomerDto> customers = [];
-    //public IEnumerable<CustomerDto> Customers { get; private set; } = [];
 
     // method: read the customers from db
     [RelayCommand]
-    public async Task ReadAllDemoCustomers()
+    public async Task ReadAllCustomers()
     {
         IEnumerable<CustomerDto> result = await _customerService.ReadAllCustomersAllInfoAsync();
         if (result.Any())
@@ -35,7 +25,7 @@ public partial class CustomerListViewModel : ObservableObject
         }
     }
 
-    // method: navigation between views
+    // method: navigation to add customer view
     [RelayCommand]
     private void NavigateToAddView()
     {
@@ -43,7 +33,7 @@ public partial class CustomerListViewModel : ObservableObject
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<CustomerAddViewModel>();
     }
 
-    // method: navigation between views
+    // method: navigation to update customer view
     [RelayCommand]
     private void NavigateToUpdateView(CustomerDto customer)
     {
@@ -53,13 +43,33 @@ public partial class CustomerListViewModel : ObservableObject
         mainViewModel.CurrentViewModel = updateCustomerViewModel;
     }
 
-    //[RelayCommand]
-    //private void NavigateToOrdersView()
-    //{
-    //    MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
-    //    mainViewModel.CurrentViewModel = _sp.GetRequiredService<ViewOrdersViewModel>();
-    //}
+    // method: navigation to order view
+    [RelayCommand]
+    private void NavigateToOrders()
+    {
+        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<OrderListViewModel>();
+    }
+
+
+   // method: navigation to products view
+   //[RelayCommand]
+   // private void NavigateToProducts()
+   // {
+   //     MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+   //     mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductListViewModel>();
+   // }
 }
+
+
+
+
+
+
+
+
+
+
 
     ////hämtar all info om en customer
     //[RelayCommand]
@@ -70,3 +80,5 @@ public partial class CustomerListViewModel : ObservableObject
     //    Debug.WriteLine($"Customer {result.Id} {result.Email} {result.FirstName} {result.StreetName}");
     //}
 
+
+    //public IEnumerable<CustomerDto> Customers { get; private set; } = [];

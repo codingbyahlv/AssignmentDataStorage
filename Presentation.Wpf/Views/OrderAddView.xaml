@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Presentation.Wpf.Views.OrderAddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Presentation.Wpf.Views"
+             xmlns:viewmodels="clr-namespace:Presentation.Wpf.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:OrderAddViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1400">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,35,0,35">
+        <StackPanel Margin="20">
+            <Button Content="&lt; Tillbaka" Command="{Binding NavigateToListViewCommand}" HorizontalAlignment="Left" Background="#ffffff" BorderThickness="0" FontFamily="Verdana" FontSize="14" Foreground="#585858"/>
+            <Label Content="Skapa order" Margin="0,30" FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Kundnummer (CustomerId)" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewOrder.CustomerId}" x:Name="Input_FirstName" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Status" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewOrder.Status}" x:Name="Input_LastName" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="DEMO" Margin="40,0"/>
+            <TextBlock Text="Produkter läggs automatiskt till" />
+
+            <Button Content="SPARA ORDER" CommandParameter="{Binding .}" Command="{Binding CreateOrderCommand}" Background="#34A522" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
