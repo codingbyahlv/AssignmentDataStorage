@@ -17,3 +17,4 @@
 2024-02-01 16:22:27, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
 2024-02-01 16:23:16, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
 2024-02-01 16:24:49, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-02 09:09:12, method:BaseRepository - ExistsAsync :: An exception was thrown while attempting to evaluate a LINQ query parameter expression. See the inner exception for more information. To show additional information call 'DbContextOptionsBuilder.EnableSensitiveDataLogging'.

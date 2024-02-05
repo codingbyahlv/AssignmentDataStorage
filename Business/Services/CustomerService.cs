@@ -45,19 +45,6 @@ namespace Infrastructure.Services
             return null!;
         }
 
-        //method: read all customers including the ref-tables
-        public async Task<IEnumerable<CustomerDto>> ReadAllCustomersAllInfoAsync()
-        {
-            try
-            {
-                IEnumerable<CustomerEntity> customerEntities = await _customersRepository.ReadAllWithAllInfoAsync();
-                IEnumerable<CustomerDto> allCustomerDtos = CustomerFactory.Create(customerEntities);
-                return allCustomerDtos;
-            }
-            catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadAllCustomersAsync"); }
-            return null!;
-        }
-
         //method: read one customer
         public async Task<CustomerDto> ReadOneCustomerAsync(int id)
         {
@@ -68,19 +55,6 @@ namespace Infrastructure.Services
                 return customerDto;
             }
             catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadCustomer"); }
-            return null!;
-        }
-
-        //method: read one customer including the ref-tables
-        public async Task<CustomerDto> ReadOneCustomerAllInfoAsync(int id)
-        {
-            try
-            {
-                CustomerEntity customerEntity = await _customersRepository.ReadOneWithAllInfoAsync(x => x.Id == id);
-                CustomerDto customerDto = CustomerFactory.Create(customerEntity);
-                return customerDto;
-            }
-            catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadOneCustomer"); }
             return null!;
         }
 
@@ -146,3 +120,35 @@ namespace Infrastructure.Services
         }
     }
 }
+
+
+
+
+
+
+
+        //method: read one customer including the ref-tables
+        //public async Task<CustomerDto> ReadOneCustomerAllInfoAsync(int id)
+        //{
+        //    try
+        //    {
+        //        CustomerEntity customerEntity = await _customersRepository.ReadOneWithAllInfoAsync(x => x.Id == id);
+        //        CustomerDto customerDto = CustomerFactory.Create(customerEntity);
+        //        return customerDto;
+        //    }
+        //    catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadOneCustomer"); }
+        //    return null!;
+        //}
+
+        //method: read all customers including the ref-tables
+        //public async Task<IEnumerable<CustomerDto>> ReadAllCustomersAllInfoAsync()
+        //{
+        //    try
+        //    {
+        //        IEnumerable<CustomerEntity> customerEntities = await _customersRepository.ReadAllWithAllInfoAsync();
+        //        IEnumerable<CustomerDto> allCustomerDtos = CustomerFactory.Create(customerEntities);
+        //        return allCustomerDtos;
+        //    }
+        //    catch (Exception ex) { _logger.Log(ex.Message, "CustomerService - ReadAllCustomersAsync"); }
+        //    return null!;
+        //}

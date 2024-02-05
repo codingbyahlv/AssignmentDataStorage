@@ -5,10 +5,31 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Presentation.Wpf.Views"
              xmlns:viewmodels="clr-namespace:Presentation.Wpf.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodels:OrderAddViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodels:OrderUpdateViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="1400">
-    <Grid>
-        <TextBlock Grid.Column="0" Text="Update" FontSize="32"/>
-    </Grid>
+    
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,35,0,35">
+        <StackPanel Margin="20">
+            <Button Content="&lt; Tillbaka" Command="{Binding NavigateToListViewCommand}" HorizontalAlignment="Left" Background="#ffffff" BorderThickness="0" FontFamily="Verdana" FontSize="14" Foreground="#585858"/>
+            <Label Content="Ändra orderstatus" Margin="0,30" FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center"/>
+            <TextBlock FontFamily="Verdana" FontSize="12" Foreground="#585858">
+                <Run Text="Kundnummer (CustomerId): " />
+                <Run Text="{Binding Order.CustomerId}" />
+            </TextBlock>
+            <TextBlock Text="Status" FontFamily="Verdana" FontSize="12" Foreground="#585858" Margin="0,20,0,0"/>
+            <TextBox Text="{Binding Order.Status}" x:Name="Input_LastName" Padding="5,10" Margin="0,0,0,10"/>
+           
+            <Grid Margin="0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" Content="RADERA ORDER" Command="{Binding DeleteOrderCommand}" CommandParameter="{Binding Order}" Background="#E21818" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana"  />
+                <Button Grid.Column="3" Content="UPPDATERA" CommandParameter="{Binding .}" Command="{Binding UpdateOrderCommand}" Background="#34A522" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana" />
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

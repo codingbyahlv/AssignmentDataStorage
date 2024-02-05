@@ -18,7 +18,7 @@ public partial class CustomerListViewModel(IServiceProvider sp, CustomerService 
     [RelayCommand]
     public async Task ReadAllCustomers()
     {
-        IEnumerable<CustomerDto> result = await _customerService.ReadAllCustomersAllInfoAsync();
+        IEnumerable<CustomerDto> result = await _customerService.ReadAllCustomersAsync();
         if (result.Any())
         {
             Customers = result;

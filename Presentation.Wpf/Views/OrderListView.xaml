@@ -31,9 +31,7 @@
                     <TextBlock Grid.Column="0" Text="Ordrar" FontSize="32"/>
                     <Button Grid.Column="1" Content="LÄGG TILL NY ORDER" Command="{Binding NavigateToAddViewCommand}" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="15" FontFamily="Verdana" />
                 </Grid>
-                    <Button Grid.Column="1" Content="DEMO CREATE" Command="{Binding CreateOrderCommand}" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="15" FontFamily="Verdana" />
-                    <Button Grid.Column="1" Content="DEMO DELETE" Command="{Binding DeleteOrderCommand}" Background="#0965EE" Foreground="#ffffff" BorderThickness="0" Padding="15" FontFamily="Verdana" />
-
+                  
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

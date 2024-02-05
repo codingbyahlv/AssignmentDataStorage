@@ -1,7 +1,6 @@
 ﻿using Business.Dtos;
 using Business.Factories;
 using Infrastructure.Entities;
-using Infrastructure.Interfaces;
 using Infrastructure.Repositories;
 using Shared.Interfaces;
 
@@ -49,36 +48,33 @@ public class OrderService(OrderRowsRepository orderRowsRepository, OrdersReposit
         return null!;
     }
 
-
-
-
-
     // method: read one order incl the orderRows
-   
+
+    //**** SKRIV KOD HÄR!
 
 
 
 
-    //method: update order
-    public async Task<bool> UpdateOrderAsync(OrderDto order)
+
+
+    //method: update order - the user should only be abel to update the status
+    public async Task<OrderDto> UpdateOrderAsync(OrderDto order)
     {
         try
         {
-            //the user should only be abel to update the status
             OrderEntity orderEntity = await _ordersRepository.UpdateAsync(x => x.Id == order.Id, OrderFactory.Create(order));
+
+            OrderDto orderDto = OrderFactory.Create(orderEntity);
+
+            return orderDto;
         }
         catch (Exception ex) { _logger.Log(ex.Message, "OrderService - UpdateOrderAsync"); }
-        return false;
+        return null!; ;
     }
-
-
-
-
-
 
     // method: update orderRows in order
 
-
+    //**** SKRIV KOD HÄR!
 
 
 
@@ -92,7 +88,7 @@ public class OrderService(OrderRowsRepository orderRowsRepository, OrdersReposit
             {
                 bool orderResult = await _ordersRepository.DeleteAsync(x => x.Id == order.Id);
 
-                //EV LÄGGA IN ATT TA BORT KOPPLADE ORDER ROWS OCKSÅ
+                //**** EV LÄGGA IN ATT TA BORT KOPPLADE ORDER ROWS OCKSÅ
 
                 if (orderResult)
                 {
@@ -103,12 +99,4 @@ public class OrderService(OrderRowsRepository orderRowsRepository, OrdersReposit
         catch (Exception ex) { _logger.Log(ex.Message, "OrderService - UpdateOrderAsync"); }
         return false;
     }
-
-
-
-
-
-
-
-
 }

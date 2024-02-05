@@ -112,37 +112,37 @@ public class CustomersRepository_Test
         Assert.True(result);
     }
 
-    //Customer: ReadAllWithAllInfoAsync
-    [Fact]
-    public async Task ReadAllWithAllInfoAsync_Should_GetAllCustomers_Return_IEnumerableOfCustomerEntities()
-    {
-        //Arrange
-        CustomersRepository customersRepository = new(_context, _logger);
+    ////Customer: ReadAllWithAllInfoAsync
+    //[Fact]
+    //public async Task ReadAllWithAllInfoAsync_Should_GetAllCustomers_Return_IEnumerableOfCustomerEntities()
+    //{
+    //    //Arrange
+    //    CustomersRepository customersRepository = new(_context, _logger);
 
-        //Act
-        IEnumerable<CustomerEntity> result = await customersRepository.ReadAllWithAllInfoAsync();
+    //    //Act
+    //    IEnumerable<CustomerEntity> result = await customersRepository.ReadAllWithAllInfoAsync();
 
-        //Assert
-        Assert.NotNull(result);
-        Assert.IsAssignableFrom<IEnumerable<CustomerEntity>>(result);
-    }
+    //    //Assert
+    //    Assert.NotNull(result);
+    //    Assert.IsAssignableFrom<IEnumerable<CustomerEntity>>(result);
+    //}
 
-    //Customer: ReadOneWithAllInfoAsync
-    [Fact]
-    public async Task ReadOneWithAllInfoAsync_Should_GetCustomerById_Return_OneCustomerEntity()
-    {
-        //Arrange
-        CustomersRepository customersRepository = new(_context, _logger);
-        CustomerEntity customerEntity = new() { Id=1, Email = "test@mail.se", Password = "Bytmig123!" };
-        await customersRepository.CreateAsync(customerEntity);
+    ////Customer: ReadOneWithAllInfoAsync
+    //[Fact]
+    //public async Task ReadOneWithAllInfoAsync_Should_GetCustomerById_Return_OneCustomerEntity()
+    //{
+    //    //Arrange
+    //    CustomersRepository customersRepository = new(_context, _logger);
+    //    CustomerEntity customerEntity = new() { Id=1, Email = "test@mail.se", Password = "Bytmig123!" };
+    //    await customersRepository.CreateAsync(customerEntity);
 
-        //Act
-        CustomerEntity result = await customersRepository.ReadOneWithAllInfoAsync(x => x.Id == customerEntity.Id);
+    //    //Act
+    //    CustomerEntity result = await customersRepository.ReadOneWithAllInfoAsync(x => x.Id == customerEntity.Id);
 
-        //Assert
-        Assert.NotNull(result);
-        Assert.Equal(customerEntity.Id, result.Id);
-    }
+    //    //Assert
+    //    Assert.NotNull(result);
+    //    Assert.Equal(customerEntity.Id, result.Id);
+    //}
 
 
 

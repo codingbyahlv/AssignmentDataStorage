@@ -28,13 +28,18 @@ public partial class OrderUpdateViewModel(IServiceProvider sp, OrderService orde
     //**************************************** DEMO WITHOUT UI ****************************************************//
  
     readonly OrderDto updateOrder = new() { Id = 10, Date = new DateTime(), Status = "delivered", CustomerId = 22 };
-    readonly OrderDto deleteOrder = new() { Id = 10, Date = new DateTime(), Status = "delivered", CustomerId = 22 };
 
     //*************************************************************************************************************//
 
     // method: update an order in db
+    [RelayCommand]
     public async Task UpdateOrder()
     {
+        OrderDto result = await _orderService.UpdateOrderAsync(_order);
+        if(result != null) 
+        {
+            NavigateToListView();
+        }
 
     }
 
@@ -42,9 +47,7 @@ public partial class OrderUpdateViewModel(IServiceProvider sp, OrderService orde
     [RelayCommand]
     public async Task DeleteOrder(OrderDto order)
     {
-        //SWITCH BACK WHEN NO DEMO!!!!!!!!!!!!!!!!!
-        //bool result = await _orderService.DeleteOrderAsync(order);
-        bool result = await _orderService.DeleteOrderAsync(deleteOrder);
+        bool result = await _orderService.DeleteOrderAsync(order);
         if (result)
         {
             NavigateToListView();

@@ -17,8 +17,7 @@
             <TextBox Text="{Binding NewOrder.CustomerId}" x:Name="Input_FirstName" Padding="5,10" Margin="0,0,0,10"/>
             <TextBlock Text="Status" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
             <TextBox Text="{Binding NewOrder.Status}" x:Name="Input_LastName" Padding="5,10" Margin="0,0,0,10"/>
-            <TextBlock Text="DEMO" Margin="40,0"/>
-            <TextBlock Text="Produkter läggs automatiskt till" />
+            <TextBlock Text="DEMO - Produkter läggs automatiskt till" Margin="40,0"/>
 
             <Button Content="SPARA ORDER" CommandParameter="{Binding .}" Command="{Binding CreateOrderCommand}" Background="#34A522" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana" HorizontalAlignment="Center"/>
         </StackPanel>

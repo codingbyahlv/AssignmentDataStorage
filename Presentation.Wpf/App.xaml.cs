@@ -27,7 +27,7 @@ namespace Presentation.Wpf
                 .ConfigureServices(services =>
                 {
                     services.AddDbContext<CustomersOrdersDbContext>(x => x.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Work\EC\4-datastorage\Assignment\Infrastructure\Data\ass_db_customers_orders.mdf;Integrated Security=True;Connect Timeout=30"));
-
+                    services.AddDbContext<ProductCatalogContext>(x => x.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Work\EC\4-datastorage\Assignment\Infrastructure\Data\ass_db_productCatalog.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=TrueData Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Work\EC\4-datastorage\Assignment\Infrastructure\Data\ass_db_productCatalog.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True"));
 
                     services.AddSingleton<MainViewModel>();
                     services.AddSingleton<MainWindow>();
