@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Infrastructure.Entities;
+﻿using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Contexts;
@@ -16,28 +14,24 @@ public partial class ProductCatalogContext : DbContext
     {
     }
 
-    public virtual DbSet<Brand> Brands { get; set; }
+    public virtual DbSet<BrandEntity> Brands { get; set; }
 
-    public virtual DbSet<Category> Categories { get; set; }
+    public virtual DbSet<CategoryEntity> Categories { get; set; }
 
-    public virtual DbSet<Product> Products { get; set; }
+    public virtual DbSet<ProductEntity> Products { get; set; }
 
-    public virtual DbSet<ProductDetail> ProductDetails { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Work\\EC\\4-datastorage\\Assignment\\Infrastructure\\Data\\ass_db_productCatalog.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=TrueData Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Work\\EC\\4-datastorage\\Assignment\\Infrastructure\\Data\\ass_db_productCatalog.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True");
+    public virtual DbSet<ProductDetailEntity> ProductDetails { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Brand>(entity =>
+        modelBuilder.Entity<BrandEntity>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Brands__3214EC07C0980B37");
 
             entity.Property(e => e.BrandName).HasMaxLength(50);
         });
 
-        modelBuilder.Entity<Category>(entity =>
+        modelBuilder.Entity<CategoryEntity>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Categori__3214EC07946E2578");
 
@@ -48,7 +42,7 @@ public partial class ProductCatalogContext : DbContext
                 .HasConstraintName("FK__Categorie__Paren__38996AB5");
         });
 
-        modelBuilder.Entity<Product>(entity =>
+        modelBuilder.Entity<ProductEntity>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__Products__3214EC07E0BA4B47");
 
@@ -58,11 +52,11 @@ public partial class ProductCatalogContext : DbContext
             entity.HasMany(d => d.Categories).WithMany(p => p.Products)
                 .UsingEntity<Dictionary<string, object>>(
                     "ProductCategory",
-                    r => r.HasOne<Category>().WithMany()
+                    r => r.HasOne<CategoryEntity>().WithMany()
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK__ProductCa__Categ__3E52440B"),
-                    l => l.HasOne<Product>().WithMany()
+                    l => l.HasOne<ProductEntity>().WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
                         .HasConstraintName("FK__ProductCa__Produ__3D5E1FD2"),
@@ -74,7 +68,7 @@ public partial class ProductCatalogContext : DbContext
                     });
         });
 
-        modelBuilder.Entity<ProductDetail>(entity =>
+        modelBuilder.Entity<ProductDetailEntity>(entity =>
         {
             entity.HasKey(e => e.ProductId).HasName("PK__ProductD__B40CC6CDE77E5C3B");
 
@@ -89,7 +83,7 @@ public partial class ProductCatalogContext : DbContext
                 .HasConstraintName("FK__ProductDe__Brand__4222D4EF");
 
             entity.HasOne(d => d.Product).WithOne(p => p.ProductDetail)
-                .HasForeignKey<ProductDetail>(d => d.ProductId)
+                .HasForeignKey<ProductDetailEntity>(d => d.ProductId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__ProductDe__Produ__412EB0B6");
         });
