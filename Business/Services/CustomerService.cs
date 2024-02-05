@@ -25,6 +25,7 @@ namespace Infrastructure.Services
                     AddressEntity addressEntity = await _addressesRepository.ReadOneAsync(x => x.StreetName == customer.StreetName && x.StreetNumber == customer.StreetNumber && x.PostalCode == customer.PostalCode && x.City == customer.City);
                     addressEntity ??= await _addressesRepository.CreateAsync(CustomerFactory.Create(customer.StreetName, customer.StreetNumber, customer.PostalCode, customer.City));
                     CustomerProfileEntity customerProfileEntity = await _customerProfilesRepository.CreateAsync(CustomerFactory.Create(customerEntity.Id, customer.FirstName, customer.LastName, customer.PhoneNumber, addressEntity.Id));
+                    
                     return true;
                 }
             }

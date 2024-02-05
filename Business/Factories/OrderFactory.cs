@@ -38,7 +38,7 @@ public static class OrderFactory
         };
     }
 
-    //skapa order
+  
     public static OrderDto Create(int id, DateTime date, string status, int customerId)
     {
         return new OrderDto

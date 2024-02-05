@@ -2,7 +2,6 @@
 
 namespace Infrastructure.Interfaces;
 
-public interface IOrderRowRepository : IBaseRepository<OrderRowEntity>
+public interface IBrandsRepository : IBaseRepository<BrandEntity>
 {
-
 }

@@ -1,17 +1,12 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Interfaces;
 using Shared.Interfaces;
 
 namespace Infrastructure.Repositories;
 
-public class AddressesRepository : BaseRepository<AddressEntity, CustomersOrdersDbContext>
+public class AddressesRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : BaseRepository<AddressEntity, CustomersOrdersDbContext>(customersOrdersDbContext, logger), IAddressesRepository
 {
-    private readonly CustomersOrdersDbContext _customersOrdersDbContext;
-    private readonly ILogger _logger;
-
-    public AddressesRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : base(customersOrdersDbContext, logger)
-    {
-        _customersOrdersDbContext = customersOrdersDbContext;
-        _logger = logger;
-    }
+    private readonly CustomersOrdersDbContext _customersOrdersDbContext = customersOrdersDbContext;
+    private readonly ILogger _logger = logger;
 }

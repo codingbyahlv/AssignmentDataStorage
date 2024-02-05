@@ -1,12 +1,13 @@
 ﻿using Business.Dtos;
 using Business.Factories;
+using Business.Interfaces;
 using Infrastructure.Entities;
 using Infrastructure.Repositories;
 using Shared.Interfaces;
 
 namespace Infrastructure.Services;
 
-public class OrderService(OrderRowsRepository orderRowsRepository, OrdersRepository ordersRepository, CustomersRepository customersRepository, ILogger logger)
+public class OrderService(OrderRowsRepository orderRowsRepository, OrdersRepository ordersRepository, CustomersRepository customersRepository, ILogger logger) : IOrderService
 {
     private readonly OrderRowsRepository _orderRowsRepository = orderRowsRepository;
     private readonly OrdersRepository _ordersRepository = ordersRepository;
@@ -49,13 +50,17 @@ public class OrderService(OrderRowsRepository orderRowsRepository, OrdersReposit
     }
 
     // method: read one order incl the orderRows
-
-    //**** SKRIV KOD HÄR!
-
-
-
-
-
+    public async Task <OrderDto> ReadOneOrderAsync(int id)
+    {
+        try
+        {
+            OrderEntity orderEntity = await _ordersRepository.ReadOneAsync(x => x.Id == id);
+            OrderDto orderDto = OrderFactory.Create(orderEntity);
+            return orderDto;
+        }
+        catch (Exception ex) { _logger.Log(ex.Message, "OrderService - RealOneOrdersAsync"); }
+        return null!;
+    }
 
     //method: update order - the user should only be abel to update the status
     public async Task<OrderDto> UpdateOrderAsync(OrderDto order)

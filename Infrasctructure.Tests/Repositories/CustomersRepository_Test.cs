@@ -13,7 +13,6 @@ public class CustomersRepository_Test
         .UseInMemoryDatabase($"{Guid.NewGuid()}")
         .Options);
 
-    //Base: ExistsAsync
     [Fact]
     public async Task ExistsAsync_Should_CheckExistCustomerByEmail_Return_True()
     {
@@ -29,7 +28,6 @@ public class CustomersRepository_Test
         Assert.True(result);
     }
 
-    //BaseRepository: CreateAsync
     [Fact]
     public async Task CreateAsync_Should_CreateCustomerEntityInDb_Return_CustomerEntityWithIdOne()
     {
@@ -45,7 +43,6 @@ public class CustomersRepository_Test
         Assert.Equal(1, result.Id);
     }
 
-    //BaseRepository: ReadAllAsync
     [Fact]
     public async Task ReadAllAsync_Should_GetAllCustomers_Return_IEnumerableOfCustomerEntities()
     {
@@ -60,7 +57,6 @@ public class CustomersRepository_Test
         Assert.IsAssignableFrom<IEnumerable<CustomerEntity>>(result);
     }
 
-    //BaseRepository: ReadOneAsync
     [Fact]
     public async Task ReadOneAsync_Should_GetCustomerByEmail_Return_OneCustomerEntity()
     {
@@ -77,7 +73,6 @@ public class CustomersRepository_Test
         Assert.Equal(customerEntity.Email, result.Email);
     }
 
-    //BaseRepository: UpdateAsync
     [Fact]
     public async Task UpdateAsync_Should_UpdateExistingCustomer_Return_UpdatedEntity()
     {
@@ -96,7 +91,6 @@ public class CustomersRepository_Test
         Assert.Equal("test2@mail.se", result.Email);
     }
 
-    //BaseRepository: DeleteAsync
     [Fact]
     public async Task DeleteAsync_Should_RemoveOneCustomerByEmail_Return_True()
     {

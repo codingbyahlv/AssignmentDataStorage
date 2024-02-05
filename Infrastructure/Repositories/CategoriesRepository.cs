@@ -1,17 +1,12 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Interfaces;
 using Shared.Interfaces;
 
 namespace Infrastructure.Repositories;
 
-public class CategoriesRepository : BaseRepository<CategoryEntity, ProductCatalogContext>
+public class CategoriesRepository(ProductCatalogContext productCatalogContext, ILogger logger) : BaseRepository<CategoryEntity, ProductCatalogContext>(productCatalogContext, logger), ICategoriesRepository
 {
-    private readonly ProductCatalogContext _productCatalogContext;
-    private readonly ILogger _logger;
-
-    public CategoriesRepository(ProductCatalogContext productCatalogContext, ILogger logger) : base(productCatalogContext, logger)
-    {
-        _productCatalogContext = productCatalogContext;
-        _logger = logger;
-    }
+    private readonly ProductCatalogContext _productCatalogContext = productCatalogContext;
+    private readonly ILogger _logger = logger;
 }

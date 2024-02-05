@@ -1,19 +1,14 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Interfaces;
 using Shared.Interfaces;
 
 namespace Infrastructure.Repositories
 {
-    public class CustomerProfilesRepository : BaseRepository<CustomerProfileEntity, CustomersOrdersDbContext>
+    public class CustomerProfilesRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : BaseRepository<CustomerProfileEntity, CustomersOrdersDbContext>(customersOrdersDbContext, logger), ICustomerProfilesRepository
     {
-        private readonly CustomersOrdersDbContext _customersOrdersDbContext;
-        private readonly ILogger _logger;
-
-        public CustomerProfilesRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : base(customersOrdersDbContext, logger)
-        {
-            _customersOrdersDbContext = customersOrdersDbContext;
-            _logger = logger;
-        }
+        private readonly CustomersOrdersDbContext _customersOrdersDbContext = customersOrdersDbContext;
+        private readonly ILogger _logger = logger;
     }
 }
 

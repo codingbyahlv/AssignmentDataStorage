@@ -1,12 +1,13 @@
 ﻿using Infrastructure.Contexts;
 using Infrastructure.Entities;
+using Infrastructure.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.Interfaces;
 using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories;
 
-public class CustomersRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : BaseRepository<CustomerEntity, CustomersOrdersDbContext>(customersOrdersDbContext, logger)
+public class CustomersRepository(CustomersOrdersDbContext customersOrdersDbContext, ILogger logger) : BaseRepository<CustomerEntity, CustomersOrdersDbContext>(customersOrdersDbContext, logger), ICustomersRepository
 {
     private readonly CustomersOrdersDbContext _customersOrdersDbContext = customersOrdersDbContext;
     private readonly ILogger _logger = logger;
