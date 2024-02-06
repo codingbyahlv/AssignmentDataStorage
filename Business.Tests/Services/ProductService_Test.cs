@@ -132,7 +132,7 @@ public class ProductService_Test
         ProductsRepository productsRepository = new(_context, _logger);
         ProductService productService = new(brandsRepository, categoriesRepository, productDetailsRepository, productsRepository, _logger);
         await productService.CreateProductAsync(demoRegDto); //skapar en produkt att kunna ta bort - OK produkten skapas enligt test
-        await productDetailsRepository.CreateAsync(demoDetailEntity); //skapar en productDetail som också ska tas bort samtidigt i min service - OK produktdetaljerna skapas enligt test
+        //await productDetailsRepository.CreateAsync(demoDetailEntity); //skapar en productDetail som också ska tas bort samtidigt i min service - OK produktdetaljerna skapas enligt test
 
         ////Act
         bool result = await productService.DeleteProductAsync(demoDto);
