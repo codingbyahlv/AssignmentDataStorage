@@ -1,27 +1,27 @@
 ﻿using Business.Dtos;
+using Business.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Presentation.Wpf.ViewModels;
 
-public partial class OrderListViewModel(IServiceProvider sp, OrderService orderService) : ObservableObject
+public partial class ProductListViewModel(IServiceProvider sp, ProductService productService) : ObservableObject
 {
     private readonly IServiceProvider _sp = sp;
-    private readonly OrderService _orderService = orderService;
+    private readonly ProductService _productService = productService;
 
     [ObservableProperty]
-    public IEnumerable<OrderDto> orders = [];
+    public IEnumerable<ProductDto> products = [];
 
-    // method: read the orders from db
+    // method: read the products from db
     [RelayCommand]
-    public async Task ReadAllOrders()
+    public async Task ReadAllProducts()
     {
-        IEnumerable<OrderDto> result = await _orderService.ReadAllOrdersAsync();
+        IEnumerable<ProductDto> result = await _productService.ReadAllProductsAsync();
         if (result.Any())
         {
-            Orders = result;
+            Products = result;
         }
     }
 
@@ -30,17 +30,17 @@ public partial class OrderListViewModel(IServiceProvider sp, OrderService orderS
     private void NavigateToAddView()
     {
         MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _sp.GetRequiredService<OrderAddViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductAddViewModel>();
     }
 
     // method: navigation to update order view
     [RelayCommand]
-    private void NavigateToUpdateView(OrderDto order)
+    private void NavigateToUpdateView(ProductDto product)
     {
         MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
-        OrderUpdateViewModel updateOrderViewModel = _sp.GetRequiredService<OrderUpdateViewModel>();
-        updateOrderViewModel.Order = order;
-        mainViewModel.CurrentViewModel = updateOrderViewModel;
+        ProductUpdateViewModel updateProductViewModel = _sp.GetRequiredService<ProductUpdateViewModel>();
+        updateProductViewModel.Product = product;
+        mainViewModel.CurrentViewModel = updateProductViewModel;
     }
 
     // method: navigation to customer view
@@ -53,12 +53,9 @@ public partial class OrderListViewModel(IServiceProvider sp, OrderService orderS
 
     //method: navigation to products view
     [RelayCommand]
-     private void NavigateToProducts()
+    private void NavigateToOrders()
     {
         MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductListViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<OrderListViewModel>();
     }
 }
-
-
-

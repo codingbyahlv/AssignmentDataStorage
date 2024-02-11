@@ -29,8 +29,8 @@ public class ProductService(BrandsRepository brandsRepository, CategoriesReposit
                 BrandEntity brandEntity = await _brandsRepository.ReadOneAsync(x => x.BrandName == product.Brand);
                 brandEntity ??= await _brandsRepository.CreateAsync(ProductFactory.Create(product.Brand));
                 ProductDetailEntity productDetailEntity = await _productDetailsRepository.CreateAsync(ProductFactory.Create(product.ProductId, brandEntity.Id, product.UnitPrice, product.Color, product.Size));
+                return true;
             }
-            return true;
         }
         catch (Exception ex) { _logger.Log(ex.Message, "ProductService - CreateProductAsync"); }
         return false;
@@ -42,7 +42,7 @@ public class ProductService(BrandsRepository brandsRepository, CategoriesReposit
         try
         {
             IEnumerable<ProductEntity> productEntities = await _productsRepository.ReadAllAsync();
-            IEnumerable<ProductDto> allProductsDtos = new List<ProductDto>();
+            IEnumerable<ProductDto> allProductsDtos = ProductFactory.Create(productEntities);
 
             return allProductsDtos;
         }
@@ -76,7 +76,15 @@ public class ProductService(BrandsRepository brandsRepository, CategoriesReposit
             BrandEntity brandEntity = await _brandsRepository.ReadOneAsync(x => x.BrandName == product.BrandName);
             brandEntity ??= await _brandsRepository.CreateAsync(ProductFactory.Create(product.BrandName));
 
-            ProductDetailEntity productDetailEntity = await _productDetailsRepository.UpdateAsync(x => x.ProductId == product.ProductId, ProductFactory.Create(product.ProductId, brandEntity.Id, product.UnitPrice, product.Color, product.Size));
+            ProductDetailEntity productDetailEntity = await _productDetailsRepository.ReadOneAsync(x => x.ProductId == product.ProductId);
+            if(productDetailEntity != null)
+            {
+                productDetailEntity = await _productDetailsRepository.UpdateAsync(x => x.ProductId == product.ProductId, ProductFactory.Create(product.ProductId, brandEntity.Id, product.UnitPrice, product.Color, product.Size));
+            }
+            else
+            {
+                productDetailEntity = await _productDetailsRepository.CreateAsync(ProductFactory.Create(product.ProductId, brandEntity.Id, product.UnitPrice, product.Color, product.Size));
+            }
 
             ProductDto productDto = ProductFactory.Create(productEntity, productDetailEntity, brandEntity, categoryEntity);
 
@@ -87,12 +95,15 @@ public class ProductService(BrandsRepository brandsRepository, CategoriesReposit
     }
 
     // method: delete product
+    // BUG!!!!!!!!!!!
+    // the method does not work because I have not managed to solve how to delete the row that has productId
+    // as primary key in the connection table ProductCategories, which needs to be done before you can delete the Product
     public async Task<bool> DeleteProductAsync(ProductDto product)
     {
         try
         {
             if (await _productsRepository.ExistsAsync(x => x.Id == product.ProductId))
-            {
+            {            
                 bool productDetailsResult = await _productDetailsRepository.DeleteAsync(x => x.ProductId == product.ProductId);
                 bool productResult = await _productsRepository.DeleteAsync(x => x.Id == product.ProductId);
                 if (productDetailsResult && productResult)

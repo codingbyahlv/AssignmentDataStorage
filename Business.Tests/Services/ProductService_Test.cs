@@ -122,6 +122,9 @@ public class ProductService_Test
         Assert.Equal(demoDto.ProductName, result.ProductName);
     }
 
+    // BUG!!!!!!!!!!!
+    // delete test does not work due to unsolved bug in ProductService
+    // see ProductService for more information
     [Fact]
     public async Task DeleteProductAsync_Should_DeleteProductFromDb_Return_True()
     {
@@ -131,15 +134,12 @@ public class ProductService_Test
         ProductDetailsRepository productDetailsRepository = new(_context, _logger);
         ProductsRepository productsRepository = new(_context, _logger);
         ProductService productService = new(brandsRepository, categoriesRepository, productDetailsRepository, productsRepository, _logger);
-        await productService.CreateProductAsync(demoRegDto); //skapar en produkt att kunna ta bort - OK produkten skapas enligt test
-        //await productDetailsRepository.CreateAsync(demoDetailEntity); //skapar en productDetail som också ska tas bort samtidigt i min service - OK produktdetaljerna skapas enligt test
+        await productService.CreateProductAsync(demoRegDto);
 
-        ////Act
+        //Act
         bool result = await productService.DeleteProductAsync(demoDto);
 
-        ////Assert
+        //Assert
         Assert.True(result);
-
-
     }
 }

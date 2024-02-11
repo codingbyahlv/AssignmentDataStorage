@@ -12,7 +12,7 @@ public partial class OrderAddViewModel(IServiceProvider sp, OrderService orderSe
     private readonly OrderService _orderService = orderService;
 
 
-    //**************************************** DEMO WITHOUT UI ****************************************************//
+    //**************************************** DEMO PRODUCTS TO ORDER ****************************************************//
 
     readonly List<DemoProduct> productList =
         [
@@ -23,7 +23,7 @@ public partial class OrderAddViewModel(IServiceProvider sp, OrderService orderSe
 
     //*************************************************************************************************************//
 
-    // instantiate: holds the new contact
+    // instantiate: holds the new orders
     [ObservableProperty]
     private OrderRegistrationDto _newOrder = new();
 
@@ -35,6 +35,7 @@ public partial class OrderAddViewModel(IServiceProvider sp, OrderService orderSe
         bool result = await _orderService.CreateOrderAsync(NewOrder, productList);
         if (result)
         {
+            NewOrder = new OrderRegistrationDto();
             NavigateToListView();
         }
     }

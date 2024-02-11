@@ -9,5 +9,5 @@ public class ProductRegistrationDto
     public string? Size { get; set; }
     public string Brand { get; set; } = null!;
     public string Category { get; set; } = null!;
-    public int ParentCategoryId {  get; set; }
+    public int? ParentCategoryId {  get; set; }
 }

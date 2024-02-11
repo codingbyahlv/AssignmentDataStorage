@@ -35,6 +35,16 @@
                 <views:OrderUpdateView />
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type viewmodels:ProductListViewModel}">
+                <views:ProductListView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ProductAddViewModel}">
+                <views:ProductAddView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodels:ProductUpdateViewModel}">
+                <views:ProductUpdateView />
+            </DataTemplate>
+
         </ContentControl.Resources>
     </ContentControl>
 

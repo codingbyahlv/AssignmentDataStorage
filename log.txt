@@ -18,3 +18,83 @@
 2024-02-01 16:23:16, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
 2024-02-01 16:24:49, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
 2024-02-02 09:09:12, method:BaseRepository - ExistsAsync :: An exception was thrown while attempting to evaluate a LINQ query parameter expression. See the inner exception for more information. To show additional information call 'DbContextOptionsBuilder.EnableSensitiveDataLogging'.
+2024-02-11 11:18:39, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:18:43, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:25:36, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:30:28, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:30:40, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:31:37, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:32:03, method:BaseRepository - ExistsAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:32:03, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:32:04, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 11:32:04, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:32:04, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:32:04, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:35:44, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:36:10, method:BaseRepository - ExistsAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:36:10, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:36:21, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 11:36:45, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:36:56, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:37:00, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:38:47, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:43:07, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:43:30, method:BaseRepository - ExistsAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:43:30, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:43:30, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 11:43:30, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:43:30, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:43:30, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:45:22, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:45:40, method:BaseRepository - ExistsAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:45:41, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:45:41, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 11:45:41, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:45:41, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:45:41, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:50:35, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:50:58, method:BaseRepository - ExistsAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:50:58, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:50:58, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 11:50:58, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:50:58, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 11:51:04, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:51:35, method:BaseRepository - ReadAllAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:51:47, method:BaseRepository - ExistsAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:51:47, method:BaseRepository - ReadOneAsync :: Invalid value for key 'Encrypt'.
+2024-02-11 11:51:47, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 11:51:48, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:00:43, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 12:00:43, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:00:43, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:29:19, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 12:29:19, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:29:19, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:31:08, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 12:31:08, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:31:08, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:37:56, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 12:39:48, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 12:39:52, method:ProductService - ReadAllProductsAsync :: Object reference not set to an instance of an object.
+2024-02-11 12:55:27, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 12:55:27, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 12:55:27, method:BaseRepository - CreateAsync :: Value cannot be null. (Parameter 'key')
+2024-02-11 13:53:10, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 14:01:09, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 14:21:54, method:BaseRepository - DeleteAsync :: The property 'ProductCategory (Dictionary<string, object>).ProductId' is part of a key and so cannot be modified or marked as modified. To change the principal of an existing entity with an identifying foreign key, first delete the dependent and invoke 'SaveChanges', and then associate the dependent with the new principal.
+2024-02-11 14:22:01, method:BaseRepository - DeleteAsync :: The property 'ProductCategory (Dictionary<string, object>).ProductId' is part of a key and so cannot be modified or marked as modified. To change the principal of an existing entity with an identifying foreign key, first delete the dependent and invoke 'SaveChanges', and then associate the dependent with the new principal.
+2024-02-11 14:22:01, method:BaseRepository - DeleteAsync :: The property 'ProductCategory (Dictionary<string, object>).ProductId' is part of a key and so cannot be modified or marked as modified. To change the principal of an existing entity with an identifying foreign key, first delete the dependent and invoke 'SaveChanges', and then associate the dependent with the new principal.
+2024-02-11 14:51:17, method:BaseRepository - DeleteAsync :: Invalid object name 'ProductCategory'.
+2024-02-11 14:51:17, method:BaseRepository - DeleteAsync :: The property 'ProductCategory (Dictionary<string, object>).ProductId' is part of a key and so cannot be modified or marked as modified. To change the principal of an existing entity with an identifying foreign key, first delete the dependent and invoke 'SaveChanges', and then associate the dependent with the new principal.
+2024-02-11 14:53:21, method:BaseRepository - DeleteAsync :: Invalid object name 'ProductCategory'.
+2024-02-11 14:53:21, method:BaseRepository - DeleteAsync :: The property 'ProductCategory (Dictionary<string, object>).ProductId' is part of a key and so cannot be modified or marked as modified. To change the principal of an existing entity with an identifying foreign key, first delete the dependent and invoke 'SaveChanges', and then associate the dependent with the new principal.
+2024-02-11 14:54:07, method:BaseRepository - DeleteAsync :: Invalid object name 'ProductCategory'.
+2024-02-11 14:57:58, method:BaseRepository - DeleteAsync :: No database provider has been configured for this DbContext. A provider can be configured by overriding the 'DbContext.OnConfiguring' method or by using 'AddDbContext' on the application service provider. If 'AddDbContext' is used, then also ensure that your DbContext type accepts a DbContextOptions<TContext> object in its constructor and passes it to the base constructor for DbContext.
+2024-02-11 15:05:22, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 15:07:24, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 15:16:22, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 15:16:35, method:ProductService - UpdateProductAsync :: Object reference not set to an instance of an object.
+2024-02-11 15:16:48, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 15:16:48, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 15:18:49, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 15:19:43, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.

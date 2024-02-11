@@ -52,13 +52,13 @@ public partial class CustomerListViewModel(IServiceProvider sp, CustomerService 
     }
 
 
-   // method: navigation to products view
-   //[RelayCommand]
-   // private void NavigateToProducts()
-   // {
-   //     MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
-   //     mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductListViewModel>();
-   // }
+    // method: navigation to products view
+    [RelayCommand]
+    private void NavigateToProducts()
+    {
+        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductListViewModel>();
+    }
 }
 
 

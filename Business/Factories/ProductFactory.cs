@@ -13,11 +13,11 @@ public class ProductFactory
         };
     }
 
-    public static CategoryEntity Create(int parentCategoryId, string categoryName)
+    public static CategoryEntity Create(int? parentCategoryId, string categoryName)
     {
         return new CategoryEntity
         {
-            ParentCategoryId = parentCategoryId,
+            ParentCategoryId = parentCategoryId != null ? parentCategoryId : null!,
             CategoryName = categoryName
         };
     }
@@ -72,19 +72,19 @@ public class ProductFactory
     }
 
 
-    public static ProductDto Create(ProductEntity productEntity, ProductDetailEntity productDetailEntity, BrandEntity brandEntity, CategoryEntity categoryEntity)
+    public static ProductDto Create(ProductEntity productEntity, ProductDetailEntity? productDetailEntity, BrandEntity? brandEntity, CategoryEntity categoryEntity)
     {
         return new ProductDto
         {
             ProductId = productEntity.Id,
             ProductName = productEntity.ProductName,
 
-            UnitPrice = productDetailEntity.UnitPrice,
-            Color = productDetailEntity.Color,
-            Size = productDetailEntity.Size,
+            UnitPrice = productDetailEntity != null ? productDetailEntity.UnitPrice : 0,
+            Color = productDetailEntity != null ? productDetailEntity.Color : null!,
+            Size = productDetailEntity != null ? productDetailEntity.Size : null!,
 
-            BrandId = brandEntity.Id,
-            BrandName = brandEntity.BrandName,
+            BrandId = brandEntity != null ? brandEntity.Id : 0,
+            BrandName = brandEntity != null ? brandEntity.BrandName : null!,
 
             CategoryId = categoryEntity.Id,
             ParentCategoryId = (int)(categoryEntity.ParentCategoryId != null ? categoryEntity.ParentCategoryId : 0),

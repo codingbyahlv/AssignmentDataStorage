@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Presentation.Wpf.Views.ProductUpdateView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Presentation.Wpf.Views"
+             xmlns:viewmodels="clr-namespace:Presentation.Wpf.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ProductUpdateViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1400">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,35,0,35">
+        <StackPanel Margin="20">
+            <Button Content="&lt; Tillbaka" Command="{Binding NavigateToListViewCommand}" HorizontalAlignment="Left" Background="#ffffff" BorderThickness="0" FontFamily="Verdana" FontSize="14" Foreground="#585858"/>
+            <Label Content="Uppdatera produkt" Margin="0,30" FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center"/>
+            
+            <TextBlock FontFamily="Verdana" FontSize="12" Foreground="#585858">
+                <Run Text="Produkt Id: " />
+                <Run Text="{Binding Product.ProductId}" />
+            </TextBlock>
+            <TextBlock Text="Produknamn" FontFamily="Verdana" FontSize="12" Foreground="#585858" Margin="0,20,0,0"/>
+            <TextBox Text="{Binding Product.ProductName}" x:Name="Input_ProductName" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Styckpris" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding Product.UnitPrice}" x:Name="Input_UnitPrice" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Färg" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding Product.Color}" x:Name="Input_Color" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Storlek" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding Product.Size}" x:Name="Input_Size" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Tillverkare" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding Product.BrandName}" x:Name="Input_Brand" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Kategori" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding Product.CategoryName}" x:Name="Input_Category" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Ev. föräldrakategori id" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding Product.ParentCategoryId}" x:Name="Input_ParentCategoryId" Padding="5,10" Margin="0,0,0,10"/>
+
+            <Grid Margin="0,30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="6*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="2" Content="RADERA ORDER" Command="{Binding DeleteProductCommand}" CommandParameter="{Binding Product}" Background="#E21818" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana"  />
+                <Button Grid.Column="3" Content="UPPDATERA" CommandParameter="{Binding .}" Command="{Binding UpdateProductCommand}" Background="#34A522" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana" />
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

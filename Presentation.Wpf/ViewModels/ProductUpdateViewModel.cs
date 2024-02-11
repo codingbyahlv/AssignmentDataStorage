@@ -1,47 +1,46 @@
 ﻿using Business.Dtos;
+using Business.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Infrastructure.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Presentation.Wpf.ViewModels;
 
-public partial class OrderUpdateViewModel(IServiceProvider sp, OrderService orderService) : ObservableObject
+public partial class ProductUpdateViewModel(IServiceProvider sp, ProductService productService) : ObservableObject
 {
     private readonly IServiceProvider _sp = sp;
-    private readonly OrderService _orderService = orderService;
-    private OrderDto _order = null!;
+    private readonly ProductService _productService = productService;
+    private ProductDto _product = null!;
 
     // prop: hold the current order information
-    public OrderDto Order
+    public ProductDto Product
     {
-        get { return _order; }
+        get { return _product; }
         set
         {
-            if (_order != value)
+            if (_product != value)
             {
-                _order = value;
+                _product = value;
             }
         }
     }
 
     // method: update an order in db
     [RelayCommand]
-    public async Task UpdateOrder()
+    public async Task UpdateProduct()
     {
-        OrderDto result = await _orderService.UpdateOrderAsync(_order);
-        if(result != null) 
+        ProductDto result = await _productService.UpdateProductAsync(_product);
+        if (result != null)
         {
             NavigateToListView();
         }
-
     }
 
     // method: delete an order in db
     [RelayCommand]
-    public async Task DeleteOrder(OrderDto order)
+    public async Task DeleteProduct(ProductDto product)
     {
-        bool result = await _orderService.DeleteOrderAsync(order);
+        bool result = await _productService.DeleteProductAsync(product);
         if (result)
         {
             NavigateToListView();
@@ -53,6 +52,9 @@ public partial class OrderUpdateViewModel(IServiceProvider sp, OrderService orde
     private void NavigateToListView()
     {
         MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
-        mainViewModel.CurrentViewModel = _sp.GetRequiredService<OrderListViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductListViewModel>();
     }
+
+
+
 }

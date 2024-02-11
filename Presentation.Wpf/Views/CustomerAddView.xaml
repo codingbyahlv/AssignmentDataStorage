@@ -12,7 +12,7 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,35,0,35">
         <StackPanel Margin="20">
             <Button Content="&lt; Tillbaka" Command="{Binding NavigateToListViewCommand}" HorizontalAlignment="Left" Background="#ffffff" BorderThickness="0" FontFamily="Verdana" FontSize="14" Foreground="#585858"/>
-            <Label Content="Lägg till kontakt" Margin="0,30" FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center"/>
+            <Label Content="Lägg till kund" Margin="0,30" FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center"/>
 
             <TextBlock Text="Förnamn" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
             <TextBox Text="{Binding NewCustomer.FirstName}" x:Name="Input_FirstName" Padding="5,10" Margin="0,0,0,10"/>
@@ -31,7 +31,7 @@
             <TextBlock Text="E-post" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
             <TextBox Text="{Binding NewCustomer.Email}" x:Name="Input_Email" Padding="5,10" Margin="0,0,0,10"/>
             <TextBlock Text="Lösenord" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
-            <TextBox Text="{Binding NewCustomer.Password}" x:Name="Input_assword" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBox Text="{Binding NewCustomer.Password}" x:Name="Input_Password" Padding="5,10" Margin="0,0,0,10"/>
             <Button Content="SPARA KONTAKT" CommandParameter="{Binding .}" Command="{Binding CreateCustomerCommand}" Background="#34A522" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana" HorizontalAlignment="Center"/>
         </StackPanel>
     </ScrollViewer>

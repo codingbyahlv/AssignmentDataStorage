@@ -1,4 +1,5 @@
-﻿using Infrastructure.Contexts;
+﻿using Business.Services;
+using Infrastructure.Contexts;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +28,7 @@ namespace Presentation.Wpf
                 .ConfigureServices(services =>
                 {
                     services.AddDbContext<CustomersOrdersDbContext>(x => x.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Work\EC\4-datastorage\Assignment\Infrastructure\Data\ass_db_customers_orders.mdf;Integrated Security=True;Connect Timeout=30"));
-                    services.AddDbContext<ProductCatalogContext>(x => x.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Work\EC\4-datastorage\Assignment\Infrastructure\Data\ass_db_productCatalog.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=TrueData Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Work\EC\4-datastorage\Assignment\Infrastructure\Data\ass_db_productCatalog.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True"));
+                    services.AddDbContext<ProductCatalogContext>(x => x.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Work\EC\4-datastorage\Assignment\Infrastructure\Data\ass_db_productCatalog.mdf;Integrated Security=True;Connect Timeout=30;Encrypt=True"));
 
                     services.AddSingleton<MainViewModel>();
                     services.AddSingleton<MainWindow>();
@@ -46,6 +47,13 @@ namespace Presentation.Wpf
                     services.AddSingleton<OrderUpdateViewModel>();
                     services.AddSingleton<OrderUpdateView>();
 
+                    services.AddSingleton<ProductListViewModel>();
+                    services.AddSingleton<ProductListView>();
+                    services.AddSingleton<ProductAddViewModel>();
+                    services.AddSingleton<ProductAddView>();
+                    services.AddSingleton<ProductUpdateViewModel>();
+                    services.AddSingleton<ProductUpdateView>();
+
                     //services.AddSingleton<ILogger>(new Logger(@"c:\Work\EC\4-datastorage\log.txt"));
                     services.AddSingleton<ILogger>(new Logger());
                     services.AddScoped<CustomerService>();
@@ -57,6 +65,11 @@ namespace Presentation.Wpf
                     services.AddScoped<OrdersRepository>();
                     services.AddScoped<OrderRowsRepository>();
 
+                    services.AddScoped<ProductService>();
+                    services.AddScoped<ProductsRepository>();
+                    services.AddScoped<ProductDetailsRepository>();
+                    services.AddScoped<BrandsRepository>();
+                    services.AddScoped<CategoriesRepository>();
                 })
                 .Build();
         }

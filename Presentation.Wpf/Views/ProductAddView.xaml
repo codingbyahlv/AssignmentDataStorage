@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="Presentation.Wpf.Views.ProductAddView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Presentation.Wpf.Views"
+             xmlns:viewmodels="clr-namespace:Presentation.Wpf.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:ProductAddViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1400">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,35,0,35">
+        <StackPanel Margin="20">
+            <Button Content="&lt; Tillbaka" Command="{Binding NavigateToListViewCommand}" HorizontalAlignment="Left" Background="#ffffff" BorderThickness="0" FontFamily="Verdana" FontSize="14" Foreground="#585858"/>
+            <Label Content="Skapa produkt" Margin="0,30" FontSize="24" FontFamily="Verdana" HorizontalAlignment="Center"/>
+
+            <TextBlock Text="Produkt Id" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.ProductId}" x:Name="Input_ProductId" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Produktnamn" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.ProductName}" x:Name="Input_ProductName" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Styckpris" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.UnitPrice}" x:Name="Input_UnitPrice" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Färg" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.Color}" x:Name="Input_Color" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Storlek" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.Size}" x:Name="Input_Size" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Tillverkare" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.Brand}" x:Name="Input_Brand" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Kategori" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.Category}" x:Name="Input_Category" Padding="5,10" Margin="0,0,0,10"/>
+            <TextBlock Text="Ev. föräldrakategori id" FontFamily="Verdana" FontSize="12" Foreground="#585858"/>
+            <TextBox Text="{Binding NewProduct.ParentCategoryId}" x:Name="Input_ParentCategoryId" Padding="5,10" Margin="0,0,0,10"/>
+
+            <Button Content="SPARA PRODUKT" CommandParameter="{Binding .}" Command="{Binding CreateProductCommand}" Background="#34A522" Foreground="#ffffff" BorderThickness="0" Margin="30" Padding="20,10" FontFamily="Verdana" HorizontalAlignment="Center"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

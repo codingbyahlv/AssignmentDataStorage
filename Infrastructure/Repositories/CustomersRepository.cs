@@ -22,7 +22,7 @@ public class CustomersRepository(CustomersOrdersDbContext customersOrdersDbConte
                 .ToListAsync();
             return entities;
         }
-        catch (Exception ex) { _logger.Log(ex.Message, "CustomerRepository - ReadAllWithAllInfoAsync"); }
+        catch (Exception ex) { _logger.Log(ex.Message, "CustomerRepository - OverrideReadAllAsync"); }
         return null!;
     }
 
@@ -36,7 +36,7 @@ public class CustomersRepository(CustomersOrdersDbContext customersOrdersDbConte
                 .FirstOrDefaultAsync(predicate);
             return oneEntity ?? null!;
         }
-        catch (Exception ex) { _logger.Log(ex.Message, "CustomerRepository - ReadOneWithAllInfoAsync"); }
+        catch (Exception ex) { _logger.Log(ex.Message, "CustomerRepository - OverrideReadOneAsync"); }
         return null!;
     }
 }

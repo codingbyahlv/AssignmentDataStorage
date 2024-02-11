@@ -23,6 +23,7 @@ public partial class CustomerAddViewModel(IServiceProvider serviceProvider, Cust
         if (result) 
         {
             NavigateToListView();
+            NewCustomer = new CustomerRegistrationDto();
         }
     }
 
