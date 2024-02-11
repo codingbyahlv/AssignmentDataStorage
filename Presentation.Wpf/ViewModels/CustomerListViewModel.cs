@@ -43,6 +43,14 @@ public partial class CustomerListViewModel(IServiceProvider sp, CustomerService 
         mainViewModel.CurrentViewModel = updateCustomerViewModel;
     }
 
+    // method: navigation to customer view
+    [RelayCommand]
+    private void NavigateToCustomers()
+    {
+        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<CustomerListViewModel>();
+    }
+
     // method: navigation to order view
     [RelayCommand]
     private void NavigateToOrders()
@@ -50,7 +58,6 @@ public partial class CustomerListViewModel(IServiceProvider sp, CustomerService 
         MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<OrderListViewModel>();
     }
-
 
     // method: navigation to products view
     [RelayCommand]

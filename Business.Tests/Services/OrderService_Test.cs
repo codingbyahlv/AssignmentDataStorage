@@ -59,7 +59,6 @@ public class OrderService_Test
         CustomerService customerService = new(customersRepository, addressesRepository, customerProfilesRepository, _logger);
         await customerService.CreateCustomerAsync(demoCustomer);
 
-
         //Act
         bool result = await orderService.CreateOrderAsync(demoRegDto, productList);
 

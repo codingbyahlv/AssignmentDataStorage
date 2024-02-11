@@ -84,5 +84,4 @@ public static class CustomerFactory
         }
         return dtoList;
     }
-
 }

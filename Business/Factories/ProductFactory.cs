@@ -62,12 +62,12 @@ public class ProductFactory
                           .Select(c => c.Id)
                           .FirstOrDefault(),
             ParentCategoryId = productEntity.Categories
-                        .Where(c => c.ParentCategoryId != null) // Assuming ParentCategoryId is nullable
-                        .Select(c => c.ParentCategoryId.Value) // Assuming ParentCategoryId is nullable
+                        .Where(c => c.ParentCategoryId != null) 
+                        .Select(c => c.ParentCategoryId.Value) 
                         .FirstOrDefault(),
             CategoryName = productEntity.Categories
                       .Select(c => c.CategoryName)
-                      .FirstOrDefault() ?? null! // If there are no categories, set a default name
+                      .FirstOrDefault() ?? null!
         };
     }
 
@@ -87,7 +87,7 @@ public class ProductFactory
             BrandName = brandEntity != null ? brandEntity.BrandName : null!,
 
             CategoryId = categoryEntity.Id,
-            ParentCategoryId = (int)(categoryEntity.ParentCategoryId != null ? categoryEntity.ParentCategoryId : 0),
+            ParentCategoryId = (int)(categoryEntity.ParentCategoryId != null ? categoryEntity.ParentCategoryId : null!),
             CategoryName = categoryEntity.CategoryName,
         };
     }

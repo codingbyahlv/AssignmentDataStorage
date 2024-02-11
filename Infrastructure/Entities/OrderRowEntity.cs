@@ -23,6 +23,5 @@ public class OrderRowEntity
     [Column(TypeName = "money")]
     public decimal UnitPrice { get; set; }
 
-    //orderRow måste ha en Order
     public virtual OrderEntity Order { get; set; } = null!;
 }

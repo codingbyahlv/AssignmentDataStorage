@@ -6,7 +6,7 @@ namespace Infrastructure.Entities;
 public class OrderEntity
 {
     [Key]
-	public int Id { get; set; } //auto
+	public int Id { get; set; }
 
     [Required]
     [Column(TypeName = "datetime2")]
@@ -19,7 +19,6 @@ public class OrderEntity
     [Required]
     public int CustomerId { get; set; }
 
-    //Order måste ha en Customer
     public virtual CustomerEntity Customer { get; set; } = null!;
 }
 

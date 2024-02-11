@@ -12,7 +12,7 @@ public partial class ProductUpdateViewModel(IServiceProvider sp, ProductService 
     private readonly ProductService _productService = productService;
     private ProductDto _product = null!;
 
-    // prop: hold the current order information
+    // prop: hold the current product information
     public ProductDto Product
     {
         get { return _product; }
@@ -25,7 +25,7 @@ public partial class ProductUpdateViewModel(IServiceProvider sp, ProductService 
         }
     }
 
-    // method: update an order in db
+    // method: update a product in db
     [RelayCommand]
     public async Task UpdateProduct()
     {
@@ -36,7 +36,7 @@ public partial class ProductUpdateViewModel(IServiceProvider sp, ProductService 
         }
     }
 
-    // method: delete an order in db
+    // method: delete a product in db
     [RelayCommand]
     public async Task DeleteProduct(ProductDto product)
     {
@@ -54,7 +54,4 @@ public partial class ProductUpdateViewModel(IServiceProvider sp, ProductService 
         MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductListViewModel>();
     }
-
-
-
 }

@@ -6,7 +6,7 @@ namespace Infrastructure.Entities;
 public class CustomerEntity
 {
     [Key]
-	public int Id { get; set; } //auto
+	public int Id { get; set; }
 
 	[Required]
 	[Column(TypeName = "nvarchar(100)")]
@@ -16,8 +16,6 @@ public class CustomerEntity
 	[Column(TypeName = "nvarchar(100)")]
 	public string Password { get; set; } = null!;
 
-
-    //en Customer kan ha en CustomerProfile
     public virtual CustomerProfileEntity? CustomerProfile { get; set; }
 }
 

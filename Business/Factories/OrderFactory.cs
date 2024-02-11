@@ -71,32 +71,4 @@ public static class OrderFactory
         }
         return dtoList;
     }
-
-
-
-
-
-
-    //skapa produkt till order
-
-
-
-    //lista med ordrar?
-
-
-
-    //lista med orderns produkter?
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -47,7 +47,7 @@ public partial class CustomerUpdateViewModel(IServiceProvider sp, CustomerServic
         }
     }
 
-    // method: navigation
+    // method: navigation back to list view
     [RelayCommand]
     private void NavigateToListView()
     {

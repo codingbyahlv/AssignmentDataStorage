@@ -70,11 +70,9 @@ public class CustomerService_Test
 
         //Assert
         Assert.NotNull(result);
-        //Arrange
         Assert.IsAssignableFrom<IEnumerable<CustomerDto>>(result);
     }
 
-    //ReadOneCustomerAsync
     [Fact]
     public async Task ReadOneCustomerAsync_Should_ReadOneCustomer_Return_CustomerDto()
     {
@@ -93,7 +91,6 @@ public class CustomerService_Test
         Assert.Equal(demoCustomer.Email, result.Email);
     }
 
-    //UpdateCustomerAsync
     [Fact]
     public async Task UpdateCustomerAsync_Should_UpdateCustomer_Return_UpdatedCustomerDto()
     {

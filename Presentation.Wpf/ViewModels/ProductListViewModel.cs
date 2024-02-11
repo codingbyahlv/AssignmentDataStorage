@@ -25,7 +25,7 @@ public partial class ProductListViewModel(IServiceProvider sp, ProductService pr
         }
     }
 
-    // method: navigation to add order view
+    // method: navigation to add product view
     [RelayCommand]
     private void NavigateToAddView()
     {
@@ -33,7 +33,7 @@ public partial class ProductListViewModel(IServiceProvider sp, ProductService pr
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductAddViewModel>();
     }
 
-    // method: navigation to update order view
+    // method: navigation to update product view
     [RelayCommand]
     private void NavigateToUpdateView(ProductDto product)
     {
@@ -51,11 +51,19 @@ public partial class ProductListViewModel(IServiceProvider sp, ProductService pr
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<CustomerListViewModel>();
     }
 
-    //method: navigation to products view
+    //method: navigation to order view
     [RelayCommand]
     private void NavigateToOrders()
     {
         MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<OrderListViewModel>();
+    }
+
+    //method: navigation to products view
+    [RelayCommand]
+    private void NavigateToProducts()
+    {
+        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<ProductListViewModel>();
     }
 }

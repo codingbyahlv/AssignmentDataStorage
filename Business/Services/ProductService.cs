@@ -70,8 +70,11 @@ public class ProductService(BrandsRepository brandsRepository, CategoriesReposit
         {
             CategoryEntity categoryEntity = await _categoriesRepository.ReadOneAsync(x => x.CategoryName == product.CategoryName);
             categoryEntity ??= await _categoriesRepository.CreateAsync(ProductFactory.Create(product.ParentCategoryId, product.CategoryName));
-
             ProductEntity productEntity = await _productsRepository.UpdateAsync(x => x.Id == product.ProductId, ProductFactory.Create(product.ProductId, product.ProductName, categoryEntity));
+
+            // BUG!!!!!!!!!!!
+            //the correct categoryEntity is added to the productEntity, but I do not succeed in updating the connection table
+            //ProductCategories and thus the category on the product is not updated either.
 
             BrandEntity brandEntity = await _brandsRepository.ReadOneAsync(x => x.BrandName == product.BrandName);
             brandEntity ??= await _brandsRepository.CreateAsync(ProductFactory.Create(product.BrandName));

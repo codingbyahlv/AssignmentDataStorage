@@ -77,13 +77,6 @@ public class OrderService(OrderRowsRepository orderRowsRepository, OrdersReposit
         return null!; ;
     }
 
-    // method: update orderRows in order
-
-    //**** SKRIV KOD HÄR!
-
-
-
-
     //method: delete order
     public async Task<bool> DeleteOrderAsync(OrderDto order)
     {
@@ -92,8 +85,6 @@ public class OrderService(OrderRowsRepository orderRowsRepository, OrdersReposit
             if (await _ordersRepository.ExistsAsync(x => x.Id == order.Id))
             {
                 bool orderResult = await _ordersRepository.DeleteAsync(x => x.Id == order.Id);
-
-                //**** EV LÄGGA IN ATT TA BORT KOPPLADE ORDER ROWS OCKSÅ
 
                 if (orderResult)
                 {

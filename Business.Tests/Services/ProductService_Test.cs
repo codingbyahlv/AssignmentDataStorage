@@ -123,8 +123,7 @@ public class ProductService_Test
     }
 
     // BUG!!!!!!!!!!!
-    // delete test does not work due to unsolved bug in ProductService
-    // see ProductService for more information
+    // delete test does not work due to unsolved bug in ProductService, check ProductService for more information
     [Fact]
     public async Task DeleteProductAsync_Should_DeleteProductFromDb_Return_True()
     {

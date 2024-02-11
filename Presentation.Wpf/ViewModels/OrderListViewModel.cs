@@ -51,6 +51,14 @@ public partial class OrderListViewModel(IServiceProvider sp, OrderService orderS
         mainViewModel.CurrentViewModel = _sp.GetRequiredService<CustomerListViewModel>();
     }
 
+    // method: navigation to order view
+    [RelayCommand]
+    private void NavigateToOrders()
+    {
+        MainViewModel mainViewModel = _sp.GetRequiredService<MainViewModel>();
+        mainViewModel.CurrentViewModel = _sp.GetRequiredService<OrderListViewModel>();
+    }
+
     //method: navigation to products view
     [RelayCommand]
      private void NavigateToProducts()

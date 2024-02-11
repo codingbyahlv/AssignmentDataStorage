@@ -106,6 +106,4 @@ public class BrandsRepository_Test
         //Assert
         Assert.True(result);
     }
-
-
 }

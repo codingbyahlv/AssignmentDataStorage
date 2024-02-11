@@ -6,7 +6,7 @@ namespace Infrastructure.Entities
     public class AddressEntity
     {
         [Key]
-		public int Id { get; set; } //auto
+		public int Id { get; set; }
 
         [Required]
         [Column(TypeName = "nvarchar(50)")]
@@ -24,8 +24,6 @@ namespace Infrastructure.Entities
         [Column(TypeName = "nvarchar(50)")]
         public string City { get; set; } = null!;
 
-
-        //en Address kan vara kopplad till flera CustomerProfiles
         public virtual ICollection<CustomerProfileEntity> CustomerProfile { get; set; } = new List<CustomerProfileEntity>();
     }
 }

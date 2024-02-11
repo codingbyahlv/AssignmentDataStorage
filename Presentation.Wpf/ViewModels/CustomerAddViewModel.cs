@@ -11,7 +11,7 @@ public partial class CustomerAddViewModel(IServiceProvider serviceProvider, Cust
     private readonly IServiceProvider _sp = serviceProvider;
     private readonly CustomerService _customerService = customerService;
 
-    // instantiate: holds the new contact
+    // instantiate: holds the new customer
     [ObservableProperty]
     private CustomerRegistrationDto _newCustomer = new();
 

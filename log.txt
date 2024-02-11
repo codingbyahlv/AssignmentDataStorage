@@ -98,3 +98,28 @@
 2024-02-11 15:16:48, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
 2024-02-11 15:18:49, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
 2024-02-11 15:19:43, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:24:43, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:24:43, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:24:43, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:24:56, method:ProductService - UpdateProductAsync :: Object reference not set to an instance of an object.
+2024-02-11 16:25:00, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:25:00, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:25:00, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:25:20, method:ProductService - UpdateProductAsync :: Object reference not set to an instance of an object.
+2024-02-11 16:25:42, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:25:42, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:25:42, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:26:11, method:ProductService - UpdateProductAsync :: Object reference not set to an instance of an object.
+2024-02-11 16:26:17, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:26:17, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:26:17, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:29:56, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:29:56, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:29:56, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:30:03, method:ProductService - UpdateProductAsync :: Object reference not set to an instance of an object.
+2024-02-11 16:30:07, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:30:07, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:30:07, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:42:45, method:BaseRepository - CreateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:42:45, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
+2024-02-11 16:42:45, method:BaseRepository - UpdateAsync :: An error occurred while saving the entity changes. See the inner exception for details.
